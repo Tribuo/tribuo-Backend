@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Mar 22, 2017 7:15:03 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Tiendas" optimistic-lock="version" table="TIENDAS">
+    <id name="nit" type="int">
+      <column name="nit"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.tribuo.backend.jpa.Usuarios" fetch="select" name="usuarios">
+      <column name="propietario" not-null="true"/>
+    </many-to-one>
+    <property name="cedula" type="java.lang.Integer">
+      <column name="cedula" unique="true"/>
+    </property>
+    <property name="razonSocial" type="string">
+      <column length="30" name="razon_social" not-null="true" unique="true"/>
+    </property>
+    <one-to-one class="com.tribuo.backend.jpa.Sucursales" name="sucursales"/>
+  </class>
+</hibernate-mapping>

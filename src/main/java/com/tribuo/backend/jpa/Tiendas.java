@@ -1,6 +1,7 @@
 package com.tribuo.backend.jpa;
 // Generated Mar 22, 2017 7:15:02 PM by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -88,6 +89,7 @@ public class Tiendas implements java.io.Serializable {
     }
 
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "tiendas")
+    @JsonIgnore
     public Sucursales getSucursales() {
         return this.sucursales;
     }

@@ -10,7 +10,7 @@
       </generator>
     </id>
     <one-to-one class="com.tribuo.backend.jpa.Tiendas" constrained="true" name="tiendas"/>
-    <property name="direccion" type="int">
+    <property name="direccion" type="string">
       <column name="direccion" not-null="true"/>
     </property>
     <property name="ciudad" type="string">

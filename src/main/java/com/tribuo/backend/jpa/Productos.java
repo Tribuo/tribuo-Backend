@@ -1,6 +1,7 @@
 package com.tribuo.backend.jpa;
 // Generated Mar 22, 2017 7:15:02 PM by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.Set;
@@ -154,6 +155,7 @@ public class Productos implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "productos")
+    @JsonIgnore
     public Set<Ventas> getVentases() {
         return this.ventases;
     }
@@ -163,6 +165,7 @@ public class Productos implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "productos")
+    @JsonIgnore
     public Set<Compras> getComprases() {
         return this.comprases;
     }
@@ -172,10 +175,12 @@ public class Productos implements java.io.Serializable {
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "productos")
+    @JsonIgnore
     public Set<ProductosTiendas> getProductosTiendases() {
         return this.productosTiendases;
     }
 
+    @JsonIgnore
     public void setProductosTiendases(Set<ProductosTiendas> productosTiendases) {
         this.productosTiendases = productosTiendases;
     }

@@ -28,4 +28,9 @@ public class CategoriaServicesImpl implements CategoriaServices {
         return catRepo.findOne(id);
     }
 
+    @Override
+    public void insertCategoria(Categorias categoria) {
+        catRepo.save(categoria);
+    }
+
 }

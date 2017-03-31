@@ -17,5 +17,7 @@ public interface CategoriaServices {
     public List<Categorias> getCategorias();
 
     public Categorias getCategoriasById(int id);
+    
+    void insertCategoria(Categorias categoria);
 
 }

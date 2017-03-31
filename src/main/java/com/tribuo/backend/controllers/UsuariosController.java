@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsuariosController {
 
     @Autowired
-    Services se;
+    UsuarioServices se;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody

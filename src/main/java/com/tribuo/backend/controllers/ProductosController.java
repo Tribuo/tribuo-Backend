@@ -6,7 +6,7 @@
 package com.tribuo.backend.controllers;
 
 import com.tribuo.backend.jpa.Productos;
-import com.tribuo.backend.services.Services;
+import com.tribuo.backend.services.ProductoServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProductosController {
 
     @Autowired
-    Services se;
+    ProductoServices se;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody

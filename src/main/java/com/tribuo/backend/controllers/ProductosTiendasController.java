@@ -5,8 +5,8 @@
  */
 package com.tribuo.backend.controllers;
 
-import com.tribuo.backend.jpa.Sucursales;
-import com.tribuo.backend.services.SucursalServices;
+import com.tribuo.backend.jpa.ProductosTiendas;
+import com.tribuo.backend.services.ProductoTiendaServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -22,23 +22,22 @@ import org.springframework.web.bind.annotation.RestController;
  * @author 2092161
  */
 @RestController
-@RequestMapping("/sucursales")
-public class SucursalesController {
-
+@RequestMapping("/prodtienda")
+public class ProductosTiendasController {
     @Autowired
-    SucursalServices se;
-
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    @ResponseBody
-    public ResponseEntity<Sucursales> getSucursale(@PathVariable("id") Integer id) {
-        Sucursales u = se.getSucursalesById(id);
-        return new ResponseEntity<>(u, HttpStatus.OK);
-    }
-
+    ProductoTiendaServices se;
+    
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Sucursales>> getSucursales() {
-        List<Sucursales> u = se.getSucursales();
+    public ResponseEntity<List<ProductosTiendas>> getProductosTiendas() {
+        List<ProductosTiendas> u = se.getProductosTiendas();
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/{idTienda}-{idProducto}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<ProductosTiendas> getProductoTiendaById(@PathVariable("idTienda") Integer idTienda, @PathVariable("idProducto") Integer idProducto) {
+        ProductosTiendas u = se.getProductoTiendaById(idTienda, idProducto);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 }

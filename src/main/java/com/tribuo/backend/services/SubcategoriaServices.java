@@ -17,5 +17,7 @@ public interface SubcategoriaServices {
     public List<Subcategorias> getSubcategorias();
 
     public Subcategorias getSubcategoriaById(int id);
+    
+    public void createSubcategoria(Subcategorias sc);
 
 }

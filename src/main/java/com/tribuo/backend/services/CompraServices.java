@@ -18,4 +18,5 @@ public interface CompraServices {
 
     public Compras getComprasById(int id);
 
+    public void registerCompra(Compras compra);
 }

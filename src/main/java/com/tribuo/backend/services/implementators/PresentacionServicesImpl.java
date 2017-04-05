@@ -28,4 +28,9 @@ public class PresentacionServicesImpl implements PresentacionServices {
         return presRepo.findOne(id);
     }
 
+    @Override
+    public void createPresentacion(Presentaciones p) {
+        presRepo.save(p);
+    }
+
 }

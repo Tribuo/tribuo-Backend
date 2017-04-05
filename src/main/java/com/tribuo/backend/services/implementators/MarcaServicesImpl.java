@@ -28,4 +28,9 @@ public class MarcaServicesImpl implements MarcaServices {
         return marcaRepo.findOne(id);
     }
 
+    @Override
+    public void createMarca(Marcas m) {
+        marcaRepo.save(m);
+    }
+
 }

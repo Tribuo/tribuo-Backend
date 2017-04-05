@@ -18,4 +18,8 @@ public interface ProductoServices {
 
     public Productos getProductosById(int id);
 
+    public void createProducto(Productos p);
+    
+    public Productos getProductoByCode(String code);
+    
 }

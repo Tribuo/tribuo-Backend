@@ -28,4 +28,9 @@ public class UsuarioServicesImpl implements UsuarioServices {
         return usuRepo.findOne(id);
     }
 
+    @Override
+    public void createUsuario(Usuarios u) {
+        usuRepo.save(u);
+    }
+
 }

@@ -28,4 +28,9 @@ public class SubcategoriaServicesImpl implements SubcategoriaServices {
         return subcatRepo.findOne(id);
     }
 
+    @Override
+    public void createSubcategoria(Subcategorias sc) {
+        subcatRepo.save(sc);
+    }
+
 }

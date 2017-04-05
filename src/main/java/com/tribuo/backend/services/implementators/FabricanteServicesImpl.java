@@ -28,4 +28,9 @@ public class FabricanteServicesImpl implements FabricanteServices {
         return fabRepo.findOne(id);
     }
 
+    @Override
+    public void createFabricante(Fabricantes fab) {
+        fabRepo.save(fab);
+    }
+
 }

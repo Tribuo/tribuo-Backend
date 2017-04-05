@@ -24,16 +24,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/prodtienda")
 public class ProductosTiendasController {
+
     @Autowired
     ProductoTiendaServices se;
-    
+
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<ProductosTiendas>> getProductosTiendas() {
         List<ProductosTiendas> u = se.getProductosTiendas();
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/{idTienda}-{idProducto}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<ProductosTiendas> getProductoTiendaById(@PathVariable("idTienda") Integer idTienda, @PathVariable("idProducto") Integer idProducto) {

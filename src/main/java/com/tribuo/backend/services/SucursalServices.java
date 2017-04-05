@@ -18,4 +18,9 @@ public interface SucursalServices {
 
     public Sucursales getSucursalesById(int id);
 
+    public List<Sucursales> getSucursalesByTienda(int tienda);
+    
+    public void createSucursal(Sucursales s);
+    
+    public void deleteSucursal(Sucursales s);
 }

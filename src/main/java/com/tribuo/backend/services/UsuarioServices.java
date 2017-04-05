@@ -17,5 +17,7 @@ public interface UsuarioServices {
     public List<Usuarios> getUsuarios();
 
     public Usuarios getUsuariosById(int id);
-
+    
+    public void createUsuario(Usuarios u);
+    
 }

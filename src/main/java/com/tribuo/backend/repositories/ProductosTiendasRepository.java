@@ -15,8 +15,18 @@ import org.springframework.data.repository.query.Param;
  *
  * @author 2092161
  */
-public interface ProductosTiendasRepository extends JpaRepository<ProductosTiendas, ProductosTiendasId>{
-    
-   @Query(value = "SELECT * FROM productos_tiendas WHERE nit_sucursal = :idTienda AND id_producto = :idProducto", nativeQuery = true)
-   ProductosTiendas getProductoTiendaById(@Param("idTienda")int idTienda, @Param("idProducto")int idProducto);
+public interface ProductosTiendasRepository extends JpaRepository<ProductosTiendas, ProductosTiendasId> {
+
+    @Query(value = "SELECT * FROM productos_tiendas WHERE nit_sucursal = :idTienda AND id_producto = :idProducto", nativeQuery = true)
+    public ProductosTiendas getProductoTiendaById(@Param("idTienda") int idTienda, @Param("idProducto") int idProducto);
+
+    @Query(value = "UPDATE productos_tiendas"
+            + "SET cantidad = :cantidad"
+            + "WHERE nit_sucursal = :sucursal AND id_producto = :producto", nativeQuery = true)
+    public void updateProductoTiendaCantidad(@Param("sucursal") int nitSucursal, @Param("producto") int ipProducto, @Param("cantidad") int cantidad);
+
+    @Query(value = "UPDATE productos_tiendas"
+            + "SET precio = :precio"
+            + "WHERE nit_sucursal = :sucursal AND id_producto = :producto", nativeQuery = true)
+    public void updateProductoTiendaPrecio(@Param("sucursal") int nitSucursal, @Param("producto") int ipProducto, @Param("precio") int precio);
 }

@@ -14,18 +14,33 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class SucursalServicesImpl implements SucursalServices {
-
+    
     @Autowired
     SucursalesRepository sucuRepo;
-
+    
     @Override
     public List<Sucursales> getSucursales() {
         return sucuRepo.findAll();
     }
-
+    
     @Override
     public Sucursales getSucursalesById(int id) {
         return sucuRepo.findOne(id);
     }
-
+    
+    @Override
+    public List<Sucursales> getSucursalesByTienda(int tienda) {
+        return sucuRepo.getSucursalesByTienda(tienda);
+    }
+    
+    @Override
+    public void createSucursal(Sucursales s) {
+        sucuRepo.save(s);
+    }
+    
+    @Override
+    public void deleteSucursal(Sucursales s) {
+        sucuRepo.delete(s);
+    }
+    
 }

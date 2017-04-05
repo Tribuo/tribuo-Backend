@@ -28,4 +28,14 @@ public class TiendaServicesImpl implements TiendaServices {
         return tienRepo.findOne(id);
     }
 
+    @Override
+    public void createTienda(Tiendas t) {
+        tienRepo.save(t);
+    }
+    
+    @Override
+    public void deleteTienda(Tiendas t){
+        tienRepo.delete(t);
+    }
+
 }

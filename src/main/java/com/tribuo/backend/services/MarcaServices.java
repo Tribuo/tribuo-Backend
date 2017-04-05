@@ -17,5 +17,7 @@ public interface MarcaServices {
     public List<Marcas> getMarcas();
 
     public Marcas getMarcasById(int id);
+    
+    public void createMarca(Marcas m);
 
 }

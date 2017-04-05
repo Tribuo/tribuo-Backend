@@ -28,4 +28,14 @@ public class ProductoServicesImpl implements ProductoServices {
         return prodRepo.findOne(id);
     }
 
+    @Override
+    public void createProducto(Productos p) {
+        prodRepo.save(p);
+    }
+
+    @Override
+    public Productos getProductoByCode(String code) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

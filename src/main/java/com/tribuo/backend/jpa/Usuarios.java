@@ -13,6 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
 
 /**
@@ -20,11 +21,11 @@ import javax.persistence.UniqueConstraint;
  */
 @Entity
 @Table(name = "usuarios",
-         catalog = "tribuo",
-         uniqueConstraints = {
-            @UniqueConstraint(columnNames = "usuario")
-            , @UniqueConstraint(columnNames = "correo")
-            , @UniqueConstraint(columnNames = "numero_contacto")}
+        catalog = "tribuo",
+        uniqueConstraints = {
+            @UniqueConstraint(columnNames = "usuario"),
+            @UniqueConstraint(columnNames = "correo"),
+            @UniqueConstraint(columnNames = "numero_contacto")}
 )
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Usuarios implements java.io.Serializable {
@@ -37,6 +38,7 @@ public class Usuarios implements java.io.Serializable {
     private String correo;
     private int numeroContacto;
     private Set<Tiendas> tiendases = new HashSet<Tiendas>(0);
+    private String passwordConfirm;
 
     public Usuarios() {
     }
@@ -134,6 +136,15 @@ public class Usuarios implements java.io.Serializable {
 
     public void setTiendases(Set<Tiendas> tiendases) {
         this.tiendases = tiendases;
+    }
+
+    @Transient
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
     }
 
 }

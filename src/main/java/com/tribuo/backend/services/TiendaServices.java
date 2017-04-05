@@ -18,4 +18,7 @@ public interface TiendaServices {
 
     public Tiendas getTiendasById(int id);
 
+    public void createTienda(Tiendas t);
+    
+    public void deleteTienda(Tiendas t);
 }

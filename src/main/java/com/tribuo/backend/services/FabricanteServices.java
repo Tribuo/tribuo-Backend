@@ -17,5 +17,7 @@ public interface FabricanteServices {
     public List<Fabricantes> getFabricantes();
 
     public Fabricantes getFabricantesById(int id);
+    
+    public void createFabricante(Fabricantes fab);
 
 }

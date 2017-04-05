@@ -17,5 +17,7 @@ public interface PresentacionServices {
     public List<Presentaciones> getPresentaciones();
 
     public Presentaciones getPresentacionesById(int id);
+    
+    public void createPresentacion(Presentaciones p);
 
 }

@@ -33,4 +33,9 @@ public class UsuarioServicesImpl implements UsuarioServices {
         usuRepo.save(u);
     }
 
+    @Override
+    public boolean existeUsuario(String usuario) {
+        return usuRepo.findByUsername(usuario) != 0;
+    }
+
 }

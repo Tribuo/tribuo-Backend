@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface ProductoTiendaServices {
 

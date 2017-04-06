@@ -13,7 +13,7 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface ProductosTiendasRepository extends JpaRepository<ProductosTiendas, ProductosTiendasId> {
 

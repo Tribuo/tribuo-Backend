@@ -10,12 +10,14 @@ import java.util.List;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface VentaServices {
 
     public List<Ventas> getVentas();
 
     public Ventas getVentasById(int id);
+
+    public void registerVenta(Ventas venta);
 
 }

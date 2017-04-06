@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 @RestController
 @RequestMapping("/compras")
@@ -44,7 +44,7 @@ public class ComprasController {
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ResponseEntity<Void> insertCategoria(@RequestBody Compras compra) {
+    public ResponseEntity<Void> insertCompra(@RequestBody Compras compra) {
         se.registerCompra(compra);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

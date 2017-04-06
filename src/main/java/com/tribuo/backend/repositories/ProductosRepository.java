@@ -12,10 +12,10 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface ProductosRepository extends JpaRepository<Productos, Integer> {
     
-    @Query(value = "SELECT * FROM productos WHERE codigoBarras = :code", nativeQuery = true)
-    public Productos getProductoByCode(@Param(":code")String code);
+    @Query(value = "SELECT * FROM productos WHERE codigo_barras = :code", nativeQuery = true)
+    public Productos getProductoByCode(@Param("code")String code);
 }

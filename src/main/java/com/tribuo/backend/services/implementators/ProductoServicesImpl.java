@@ -35,7 +35,7 @@ public class ProductoServicesImpl implements ProductoServices {
 
     @Override
     public Productos getProductoByCode(String code) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return prodRepo.getProductoByCode(code);
     }
 
 }

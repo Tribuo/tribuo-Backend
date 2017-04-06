@@ -13,10 +13,10 @@ import org.springframework.data.repository.query.Param;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface SucursalesRepository extends JpaRepository<Sucursales, Integer> {
     
     @Query(value="SELECT * FROM sucursales WHERE nit = :tienda", nativeQuery = true)
-    public List<Sucursales> getSucursalesByTienda(@Param(":tienda")int tienda);
+    public List<Sucursales> getSucursalesByTienda(@Param("tienda")int tienda);
 }

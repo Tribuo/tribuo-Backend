@@ -58,7 +58,7 @@ public class Subcategorias implements java.io.Serializable {
         this.idSubcategoria = idSubcategoria;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria", nullable = false)
     public Categorias getCategorias() {
         return this.categorias;

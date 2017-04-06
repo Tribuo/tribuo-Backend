@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 @RestController
 @RequestMapping("/productos")
@@ -40,5 +41,18 @@ public class ProductosController {
     public ResponseEntity<List<Productos>> getProductos() {
         List<Productos> u = se.getProductos();
         return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/codigo/{code}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Productos> getOPriductoByCode(@PathVariable("code") String code){
+        Productos p = se.getProductoByCode(code);
+        return new ResponseEntity<>(p, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public ResponseEntity<Void> insertProducto(@RequestBody Productos p) {
+        se.createProducto(p);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,5 +42,17 @@ public class UsuariosController {
     public ResponseEntity<List<Usuarios>> getUsuarios() {
         List<Usuarios> u = se.getUsuarios();
         return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public ResponseEntity<Void> insertUsuario(@RequestBody Usuarios p) {
+        se.createUsuario(p);
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "/existe/{username}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Boolean> existeUsuario(@PathVariable("username") String usuario) {
+        return new ResponseEntity<>(se.existeUsuario(usuario), HttpStatus.OK);
     }
 }

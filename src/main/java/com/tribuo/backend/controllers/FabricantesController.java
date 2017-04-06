@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 @RestController
 @RequestMapping("/fabricantes")
@@ -40,5 +41,10 @@ public class FabricantesController {
     public ResponseEntity<List<Fabricantes>> getFabricantes() {
         List<Fabricantes> u = se.getFabricantes();
         return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
+    public ResponseEntity<Void> insertFabricante(@RequestBody Fabricantes fabricante) {
+        se.createFabricante(fabricante);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 }

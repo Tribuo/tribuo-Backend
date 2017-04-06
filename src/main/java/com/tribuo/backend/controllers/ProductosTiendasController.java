@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 @RestController
 @RequestMapping("/prodtienda")
@@ -41,4 +41,5 @@ public class ProductosTiendasController {
         ProductosTiendas u = se.getProductoTiendaById(idTienda, idProducto);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
+    
 }

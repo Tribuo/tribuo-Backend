@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 @RestController
 @RequestMapping("/categorias")
@@ -42,10 +42,10 @@ public class CategoriasController {
         List<Categorias> u = se.getCategorias();
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
-    
+
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertCategoria(@RequestBody Categorias categoria) {
         se.insertCategoria(categoria);
         return new ResponseEntity<>(HttpStatus.CREATED);
-}
+    }
 }

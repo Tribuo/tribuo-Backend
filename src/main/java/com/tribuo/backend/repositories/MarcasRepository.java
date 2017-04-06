@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface MarcasRepository extends JpaRepository<Marcas, Integer> {
 

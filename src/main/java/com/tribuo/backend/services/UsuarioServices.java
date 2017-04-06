@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author 2092161
+ * @author Camilo Aguado
  */
 public interface UsuarioServices {
 
@@ -19,5 +19,7 @@ public interface UsuarioServices {
     public Usuarios getUsuariosById(int id);
     
     public void createUsuario(Usuarios u);
+    
+    public boolean existeUsuario(String usuario);
     
 }

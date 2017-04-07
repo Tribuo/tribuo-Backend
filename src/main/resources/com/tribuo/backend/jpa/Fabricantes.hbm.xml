@@ -3,19 +3,19 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Fabricantes" table="fabricantes" catalog="tribuo" optimistic-lock="version">
-        <id name="idFabricante" type="java.lang.Integer">
+    <class name="com.tribuo.backend.jpa.Fabricantes" table="FABRICANTES" catalog="tribuo">
+        <id name="idFabricante" type="int">
             <column name="id_fabricante" />
-            <generator class="identity" />
+            <generator class="assigned"></generator>
         </id>
         <property name="nombreFabricante" type="string">
             <column name="nombre_fabricante" length="30" not-null="true" unique="true" />
         </property>
-        <set name="marcases" table="marcas" inverse="true" lazy="true" fetch="select">
+        <set name="marcases" table="MARCAS" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="fabricante" not-null="true" />
             </key>
-            <one-to-many class="com.tribuo.backend.Marcas" />
+            <one-to-many class="com.tribuo.backend.jpa.Marcas" />
         </set>
     </class>
 </hibernate-mapping>

@@ -3,10 +3,10 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Presentaciones" table="presentaciones" catalog="tribuo" optimistic-lock="version">
-        <id name="idPresentacion" type="java.lang.Integer">
+    <class name="com.tribuo.backend.jpa.Presentaciones" table="PRESENTACIONES" catalog="tribuo">
+        <id name="idPresentacion" type="int">
             <column name="id_presentacion" />
-            <generator class="identity" />
+            <generator class="assigned"></generator>
         </id>
         <property name="cantidad" type="int">
             <column name="cantidad" not-null="true" />
@@ -14,11 +14,11 @@
         <property name="unidadMedida" type="string">
             <column name="unidad_medida" length="3" not-null="true" />
         </property>
-        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
+        <set name="productoses" table="PRODUCTOS" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="tipo_presentacion" not-null="true" />
             </key>
-            <one-to-many class="com.tribuo.backend.Productos" />
+            <one-to-many class="com.tribuo.backend.jpa.Productos" />
         </set>
     </class>
 </hibernate-mapping>

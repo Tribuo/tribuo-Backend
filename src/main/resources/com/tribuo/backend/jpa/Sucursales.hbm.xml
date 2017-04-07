@@ -3,37 +3,37 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Sucursales" table="sucursales" catalog="tribuo" optimistic-lock="version">
+    <class name="com.tribuo.backend.jpa.Sucursales" table="SUCURSALES" catalog="tribuo">
         <id name="nit" type="int">
             <column name="nit" />
             <generator class="foreign">
                 <param name="property">tiendas</param>
             </generator>
         </id>
-        <one-to-one name="tiendas" class="com.tribuo.backend.Tiendas" constrained="true"></one-to-one>
+        <one-to-one name="tiendas" class="com.tribuo.backend.jpa.Tiendas" constrained="true"></one-to-one>
         <property name="direccion" type="string">
-            <column name="direccion" length="30" not-null="true" />
+            <column name="direccion" not-null="true" />
         </property>
         <property name="ciudad" type="string">
             <column name="ciudad" length="30" not-null="true" />
         </property>
-        <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
+        <set name="ventases" table="VENTAS" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="nit_sucursal" not-null="true" />
             </key>
-            <one-to-many class="com.tribuo.backend.Ventas" />
+            <one-to-many class="com.tribuo.backend.jpa.Ventas" />
         </set>
-        <set name="productosTiendases" table="productos_tiendas" inverse="true" lazy="true" fetch="select">
+        <set name="productosTiendases" table="PRODUCTOS_TIENDAS" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="nit_sucursal" not-null="true" />
             </key>
-            <one-to-many class="com.tribuo.backend.ProductosTiendas" />
+            <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas" />
         </set>
-        <set name="comprases" table="compras" inverse="true" lazy="true" fetch="select">
+        <set name="comprases" table="COMPRAS" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="nit_sucursal" not-null="true" />
             </key>
-            <one-to-many class="com.tribuo.backend.Compras" />
+            <one-to-many class="com.tribuo.backend.jpa.Compras" />
         </set>
     </class>
 </hibernate-mapping>

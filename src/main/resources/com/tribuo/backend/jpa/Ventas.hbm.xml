@@ -3,20 +3,17 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Compras" table="compras" catalog="tribuo" optimistic-lock="version">
-        <id name="idCompra" type="java.lang.Integer">
-            <column name="id_compra" />
-            <generator class="identity" />
+    <class name="com.tribuo.backend.jpa.Ventas" table="VENTAS" catalog="tribuo">
+        <id name="idVenta" type="java.lang.Integer">
+            <column name="id_venta" />
+            <generator class="identity"></generator>
         </id>
-        <many-to-one name="productos" class="com.tribuo.backend.Productos" fetch="select">
+        <many-to-one name="productos" class="com.tribuo.backend.jpa.Productos" fetch="select">
             <column name="id_producto" not-null="true" />
         </many-to-one>
-        <many-to-one name="sucursales" class="com.tribuo.backend.Sucursales" fetch="select">
+        <many-to-one name="sucursales" class="com.tribuo.backend.jpa.Sucursales" fetch="select">
             <column name="nit_sucursal" not-null="true" />
         </many-to-one>
-        <property name="precioUnidad" type="int">
-            <column name="precio_unidad" not-null="true" />
-        </property>
         <property name="cantidad" type="int">
             <column name="cantidad" not-null="true" />
         </property>

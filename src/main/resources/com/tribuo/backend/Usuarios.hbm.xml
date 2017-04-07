@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Mar 22, 2017 7:15:03 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="tribuo" name="com.tribuo.backend.jpa.Usuarios" optimistic-lock="version" table="USUARIOS">
+  <class catalog="tribuo" name="com.tribuo.backend.Usuarios" optimistic-lock="version" table="usuarios">
     <id name="idUsuario" type="java.lang.Integer">
       <column name="id_usuario"/>
       <generator class="identity"/>
@@ -25,11 +25,17 @@
     <property name="numeroContacto" type="int">
       <column name="numero_contacto" not-null="true" unique="true"/>
     </property>
-    <set fetch="select" inverse="true" lazy="true" name="tiendases" table="TIENDAS">
+    <set fetch="select" inverse="true" lazy="true" name="tiendases" table="tiendas">
       <key>
         <column name="propietario" not-null="true"/>
       </key>
-      <one-to-many class="com.tribuo.backend.jpa.Tiendas"/>
+      <one-to-many class="com.tribuo.backend.Tiendas"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="roleses" table="roles">
+      <key>
+        <column name="usuario" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Roles"/>
     </set>
   </class>
 </hibernate-mapping>

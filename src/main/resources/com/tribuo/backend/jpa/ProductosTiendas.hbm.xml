@@ -3,8 +3,8 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.ProductosTiendas" table="productos_tiendas" catalog="tribuo" optimistic-lock="version">
-        <composite-id name="id" class="com.tribuo.backend.ProductosTiendasId">
+    <class name="com.tribuo.backend.jpa.ProductosTiendas" table="PRODUCTOS_TIENDAS" catalog="tribuo">
+        <composite-id name="id" class="com.tribuo.backend.jpa.ProductosTiendasId">
             <key-property name="nitSucursal" type="int">
                 <column name="nit_sucursal" />
             </key-property>
@@ -12,10 +12,10 @@
                 <column name="id_producto" />
             </key-property>
         </composite-id>
-        <many-to-one name="productos" class="com.tribuo.backend.Productos" update="false" insert="false" fetch="select">
+        <many-to-one name="productos" class="com.tribuo.backend.jpa.Productos" update="false" insert="false" fetch="select">
             <column name="id_producto" not-null="true" />
         </many-to-one>
-        <many-to-one name="sucursales" class="com.tribuo.backend.Sucursales" update="false" insert="false" fetch="select">
+        <many-to-one name="sucursales" class="com.tribuo.backend.jpa.Sucursales" update="false" insert="false" fetch="select">
             <column name="nit_sucursal" not-null="true" />
         </many-to-one>
         <property name="cantidad" type="int">

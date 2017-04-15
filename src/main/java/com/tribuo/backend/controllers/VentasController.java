@@ -5,7 +5,7 @@
  */
 package com.tribuo.backend.controllers;
 
-import com.tribuo.backend.jpa.Usuarios;
+import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.jpa.Ventas;
 import com.tribuo.backend.services.VentaServices;
 import java.util.List;

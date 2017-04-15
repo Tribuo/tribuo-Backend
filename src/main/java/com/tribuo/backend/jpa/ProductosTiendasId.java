@@ -1,5 +1,5 @@
 package com.tribuo.backend.jpa;
-// Generated Apr 7, 2017 11:20:18 AM by Hibernate Tools 4.3.1
+// Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 
 import javax.persistence.Column;
@@ -45,6 +45,23 @@ public class ProductosTiendasId  implements java.io.Serializable {
     }
 
 
+   public boolean equals(Object other) {
+         if ( (this == other ) ) return true;
+		 if ( (other == null ) ) return false;
+		 if ( !(other instanceof ProductosTiendasId) ) return false;
+		 ProductosTiendasId castOther = ( ProductosTiendasId ) other; 
+         
+		 return (this.getNitSucursal()==castOther.getNitSucursal())
+ && (this.getIdProducto()==castOther.getIdProducto());
+   }
+   
+   public int hashCode() {
+         int result = 17;
+         
+         result = 37 * result + this.getNitSucursal();
+         result = 37 * result + this.getIdProducto();
+         return result;
+   }   
 
 
 }

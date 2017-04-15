@@ -5,7 +5,7 @@
  */
 package com.tribuo.backend.repositories;
 
-import com.tribuo.backend.jpa.Usuarios;
+import com.tribuo.backend.jpa.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -14,8 +14,8 @@ import org.springframework.data.repository.query.Param;
  *
  * @author Camilo Aguado
  */
-public interface UsuariosRepository extends JpaRepository<Usuarios, Integer> {
+public interface UsuariosRepository extends JpaRepository<User, Integer> {
 
-    @Query(value = "SELECT COUNT(usuario) FROM usuarios WHERE usuario = :username",nativeQuery = true)
-    Integer findByUsername(@Param("username")String usuario);
+    @Query(value = "SELECT COUNT(email) FROM user WHERE email = :correo",nativeQuery = true)
+    Integer findByUsername(@Param("correo")String usuario);
 }

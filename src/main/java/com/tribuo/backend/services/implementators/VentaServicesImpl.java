@@ -40,7 +40,7 @@ public class VentaServicesImpl implements VentaServices {
     public void registerVenta(Ventas venta) {
         Productos p = venta.getProductos();
         Sucursales s = venta.getSucursales();
-        ProductosTiendasId ptid = new ProductosTiendasId(p.getIdProducto(), s.getNit());
+        ProductosTiendasId ptid = new ProductosTiendasId(p.getIdProducto(), s.getIdSucursal());
         if (!prodTienRepo.exists(ptid)) {
             ProductosTiendas pt = prodTienRepo.findOne(ptid);
             pt.setCantidad(pt.getCantidad()-venta.getCantidad());

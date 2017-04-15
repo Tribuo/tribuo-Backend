@@ -5,7 +5,7 @@
  */
 package com.tribuo.backend.services;
 
-import com.tribuo.backend.jpa.Usuarios;
+import com.tribuo.backend.jpa.User;
 import java.util.List;
 
 /**
@@ -14,11 +14,11 @@ import java.util.List;
  */
 public interface UsuarioServices {
 
-    public List<Usuarios> getUsuarios();
+    public List<User> getUsuarios();
 
-    public Usuarios getUsuariosById(int id);
+    public User getUsuariosById(int id);
     
-    public void createUsuario(Usuarios u);
+    public void createUsuario(User u);
     
     public boolean existeUsuario(String usuario);
     

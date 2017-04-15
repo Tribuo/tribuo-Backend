@@ -42,10 +42,10 @@ public class CompraServicesImpl implements CompraServices {
         Productos p = compra.getProductos();
         ProductosTiendas pt;
         try {
-            pt = prodTienRepo.getProductoTiendaById(s.getNit(), p.getIdProducto());
+            pt = prodTienRepo.getProductoTiendaById(s.getIdSucursal(), p.getIdProducto());
             pt.setCantidad(pt.getCantidad() + compra.getCantidad());
         } catch (Exception e) {
-            ProductosTiendasId ptID = new ProductosTiendasId(s.getNit(), p.getIdProducto());
+            ProductosTiendasId ptID = new ProductosTiendasId(s.getIdSucursal(), p.getIdProducto());
             pt = new ProductosTiendas(ptID, p, s, compra.getCantidad(), 0);
 
         }

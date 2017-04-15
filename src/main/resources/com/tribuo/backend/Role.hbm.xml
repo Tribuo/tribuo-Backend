@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Role" optimistic-lock="version" table="role">
+    <id name="roleId" type="java.lang.Integer">
+      <column name="role_id"/>
+      <generator class="identity"/>
+    </id>
+    <property name="rol" type="string">
+      <column length="20" name="rol" not-null="true" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="users" table="user_role">
+      <key>
+        <column name="role_id" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.tribuo.backend.jpa.User">
+        <column name="user_id" not-null="true"/>
+      </many-to-many>
+    </set>
+  </class>
+</hibernate-mapping>

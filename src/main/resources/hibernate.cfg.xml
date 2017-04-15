@@ -46,42 +46,18 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://db4free.net:3306/tribuo?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">camiloaguado</property>
     <property name="hibernate.connection.password">2d13b8</property>
-    <mapping resource="com/tribuo/backend/Subcategorias.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Sucursales.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Fabricantes.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Ventas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Categorias.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Compras.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Productos.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/ProductosTiendas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Presentaciones.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Tiendas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Usuarios.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/Marcas.hbm.xml"/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping/>
-    <mapping resource="com/tribuo/backend/Roles.hbm.xml"/>
-    <mapping/>
-    <mapping resource="com/tribuo/backend/jpa/ProductosTiendas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Ventas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Compras.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Presentaciones.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Categorias.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/User.hbm.xml"/>
     <mapping resource="com/tribuo/backend/jpa/Tiendas.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Ventas.hbm.xml"/>
     <mapping resource="com/tribuo/backend/jpa/Fabricantes.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Productos.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Sucursales.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Marcas.hbm.xml"/>
-    <mapping resource="com/tribuo/backend/jpa/Usuarios.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/ProductosTiendas.hbm.xml"/>
     <mapping resource="com/tribuo/backend/jpa/Subcategorias.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Marcas.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Presentaciones.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Role.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Sucursales.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Categorias.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Compras.hbm.xml"/>
+    <mapping resource="com/tribuo/backend/jpa/Productos.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

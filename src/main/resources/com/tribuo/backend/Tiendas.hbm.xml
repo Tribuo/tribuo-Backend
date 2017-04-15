@@ -1,22 +1,29 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Tiendas" table="tiendas" catalog="tribuo" optimistic-lock="version">
-        <id name="nit" type="int">
-            <column name="nit" />
-            <generator class="assigned" />
-        </id>
-        <many-to-one name="usuarios" class="com.tribuo.backend.Usuarios" fetch="select">
-            <column name="propietario" not-null="true" />
-        </many-to-one>
-        <property name="cedula" type="java.lang.Integer">
-            <column name="cedula" unique="true" />
-        </property>
-        <property name="razonSocial" type="string">
-            <column name="razon_social" length="30" not-null="true" unique="true" />
-        </property>
-        <one-to-one name="sucursales" class="com.tribuo.backend.Sucursales"></one-to-one>
-    </class>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Tiendas" optimistic-lock="version" table="tiendas">
+    <id name="idTienda" type="java.lang.Integer">
+      <column name="id_tienda"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.tribuo.backend.jpa.User" fetch="select" name="user">
+      <column name="propietario" not-null="true"/>
+    </many-to-one>
+    <property name="nit" type="java.lang.Integer">
+      <column name="nit"/>
+    </property>
+    <property name="cedula" type="int">
+      <column name="cedula" not-null="true" unique="true"/>
+    </property>
+    <property name="razonSocial" type="string">
+      <column length="30" name="razon_social" not-null="true" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="sucursaleses" table="sucursales">
+      <key>
+        <column name="tienda" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Sucursales"/>
+    </set>
+  </class>
 </hibernate-mapping>

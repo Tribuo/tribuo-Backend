@@ -1,39 +1,38 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Sucursales" table="sucursales" catalog="tribuo" optimistic-lock="version">
-        <id name="nit" type="int">
-            <column name="nit" />
-            <generator class="foreign">
-                <param name="property">tiendas</param>
-            </generator>
-        </id>
-        <one-to-one name="tiendas" class="com.tribuo.backend.Tiendas" constrained="true"></one-to-one>
-        <property name="direccion" type="string">
-            <column name="direccion" length="30" not-null="true" />
-        </property>
-        <property name="ciudad" type="string">
-            <column name="ciudad" length="30" not-null="true" />
-        </property>
-        <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nit_sucursal" not-null="true" />
-            </key>
-            <one-to-many class="com.tribuo.backend.Ventas" />
-        </set>
-        <set name="productosTiendases" table="productos_tiendas" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nit_sucursal" not-null="true" />
-            </key>
-            <one-to-many class="com.tribuo.backend.ProductosTiendas" />
-        </set>
-        <set name="comprases" table="compras" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="nit_sucursal" not-null="true" />
-            </key>
-            <one-to-many class="com.tribuo.backend.Compras" />
-        </set>
-    </class>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Sucursales" optimistic-lock="version" table="sucursales">
+    <id name="idSucursal" type="int">
+      <column name="id_sucursal"/>
+      <generator class="assigned"/>
+    </id>
+    <many-to-one class="com.tribuo.backend.jpa.Tiendas" fetch="select" name="tiendas">
+      <column name="tienda" not-null="true"/>
+    </many-to-one>
+    <property name="direccion" type="string">
+      <column length="30" name="direccion" not-null="true"/>
+    </property>
+    <property name="ciudad" type="string">
+      <column length="30" name="ciudad" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="ventases" table="ventas">
+      <key>
+        <column name="nit_sucursal" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Ventas"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="productosTiendases" table="productos_tiendas">
+      <key>
+        <column name="nit_sucursal" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="comprases" table="compras">
+      <key>
+        <column name="nit_sucursal" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Compras"/>
+    </set>
+  </class>
 </hibernate-mapping>

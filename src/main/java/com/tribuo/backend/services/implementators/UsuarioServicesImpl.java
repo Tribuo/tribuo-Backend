@@ -5,7 +5,7 @@
  */
 package com.tribuo.backend.services.implementators;
 
-import com.tribuo.backend.jpa.Usuarios;
+import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.repositories.UsuariosRepository;
 import com.tribuo.backend.services.UsuarioServices;
 import java.util.List;
@@ -19,17 +19,17 @@ public class UsuarioServicesImpl implements UsuarioServices {
     UsuariosRepository usuRepo;
 
     @Override
-    public List<Usuarios> getUsuarios() {
+    public List<User> getUsuarios() {
         return usuRepo.findAll();
     }
 
     @Override
-    public Usuarios getUsuariosById(int id) {
+    public User getUsuariosById(int id) {
         return usuRepo.findOne(id);
     }
 
     @Override
-    public void createUsuario(Usuarios u) {
+    public void createUsuario(User u) {
         usuRepo.save(u);
     }
 

@@ -1,24 +1,23 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 7, 2017 11:20:19 AM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="com.tribuo.backend.Marcas" table="marcas" catalog="tribuo" optimistic-lock="version">
-        <id name="idMarca" type="java.lang.Integer">
-            <column name="id_marca" />
-            <generator class="identity" />
-        </id>
-        <many-to-one name="fabricantes" class="com.tribuo.backend.Fabricantes" fetch="select">
-            <column name="fabricante" not-null="true" />
-        </many-to-one>
-        <property name="nombreMarca" type="string">
-            <column name="nombre_marca" length="30" not-null="true" unique="true" />
-        </property>
-        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="marca" not-null="true" />
-            </key>
-            <one-to-many class="com.tribuo.backend.Productos" />
-        </set>
-    </class>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Marcas" optimistic-lock="version" table="marcas">
+    <id name="idMarca" type="java.lang.Integer">
+      <column name="id_marca"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.tribuo.backend.jpa.Fabricantes" fetch="select" name="fabricantes">
+      <column name="fabricante" not-null="true"/>
+    </many-to-one>
+    <property name="nombreMarca" type="string">
+      <column length="30" name="nombre_marca" not-null="true" unique="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="productoses" table="productos">
+      <key>
+        <column name="marca" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Productos"/>
+    </set>
+  </class>
 </hibernate-mapping>

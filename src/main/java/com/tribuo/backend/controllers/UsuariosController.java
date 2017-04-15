@@ -5,7 +5,7 @@
  */
 package com.tribuo.backend.controllers;
 
-import com.tribuo.backend.jpa.Usuarios;
+import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.services.*;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,20 +32,20 @@ public class UsuariosController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Usuarios> getUsuario(@PathVariable("id") Integer id) {
-        Usuarios u = se.getUsuariosById(id);
+    public ResponseEntity<User> getUsuario(@PathVariable("id") Integer id) {
+        User u = se.getUsuariosById(id);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Usuarios>> getUsuarios() {
-        List<Usuarios> u = se.getUsuarios();
+    public ResponseEntity<List<User>> getUsuarios() {
+        List<User> u = se.getUsuarios();
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
-    public ResponseEntity<Void> insertUsuario(@RequestBody Usuarios p) {
+    public ResponseEntity<Void> insertUsuario(@RequestBody User p) {
         se.createUsuario(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }

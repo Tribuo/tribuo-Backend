@@ -28,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsuariosController {
 
     @Autowired
-    UsuarioServices se;
+    UserService se;
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
@@ -49,10 +49,11 @@ public class UsuariosController {
         se.createUsuario(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
+/**
     @RequestMapping(value = "/existe/{username}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Boolean> existeUsuario(@PathVariable("username") String usuario) {
-        return new ResponseEntity<>(se.existeUsuario(usuario), HttpStatus.OK);
+        return new ResponseEntity<>(se.existeCorreo(usuario), HttpStatus.OK);
     }
+    **/
 }

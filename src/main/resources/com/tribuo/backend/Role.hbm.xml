@@ -7,8 +7,8 @@
       <column name="role_id"/>
       <generator class="identity"/>
     </id>
-    <property name="rol" type="string">
-      <column length="20" name="rol" not-null="true" unique="true"/>
+    <property name="role" type="string">
+      <column length="20" name="role" not-null="true" unique="true"/>
     </property>
     <set fetch="select" inverse="true" lazy="true" name="users" table="user_role">
       <key>

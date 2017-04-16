@@ -20,24 +20,24 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name="role"
     ,catalog="tribuo"
-    , uniqueConstraints = @UniqueConstraint(columnNames="rol") 
+    , uniqueConstraints = @UniqueConstraint(columnNames="role") 
 )
 public class Role  implements java.io.Serializable {
 
 
      private Integer roleId;
-     private String rol;
+     private String role;
      private Set<User> users = new HashSet<User>(0);
 
     public Role() {
     }
 
 	
-    public Role(String rol) {
-        this.rol = rol;
+    public Role(String role) {
+        this.role = role;
     }
-    public Role(String rol, Set<User> users) {
-       this.rol = rol;
+    public Role(String role, Set<User> users) {
+       this.role = role;
        this.users = users;
     }
    
@@ -54,13 +54,13 @@ public class Role  implements java.io.Serializable {
     }
 
     
-    @Column(name="rol", unique=true, nullable=false, length=20)
-    public String getRol() {
-        return this.rol;
+    @Column(name="role", unique=true, nullable=false, length=20)
+    public String getRole() {
+        return this.role;
     }
     
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String role) {
+        this.role = role;
     }
 
 @ManyToMany(fetch=FetchType.LAZY, mappedBy="roles")

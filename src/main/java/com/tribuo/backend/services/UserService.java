@@ -12,14 +12,17 @@ import java.util.List;
  *
  * @author Camilo Aguado
  */
-public interface UsuarioServices {
+public interface UserService {
 
     public List<User> getUsuarios();
 
     public User getUsuariosById(int id);
-    
+
     public void createUsuario(User u);
-    
-    public boolean existeUsuario(String usuario);
-    
+
+   // public boolean existeCorreo(String email);
+
+    public User findUserByEmail(String email);
+
+    public void saveUser(User user);
 }

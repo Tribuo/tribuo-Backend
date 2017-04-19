@@ -41,6 +41,7 @@
                         <div class="form-group">
                             <div class="col-sm-9">
                                 <input type="email" th:field="*{email}" placeholder="Email"
+
                                        class="form-control" /> <label
                                        th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                        class="validation-message"></label>
@@ -52,6 +53,7 @@
                                 <label th:if="${#fields.hasErrors('contactNumber')}" th:errors="*{contactNumber}"
                                        class="validation-message"></label>
                                 <input type="number" th:field="*{contactNumber}" placeholder="contactNumber"
+
                                        class="form-control" /> 
                             </div>
                         </div>

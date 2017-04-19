@@ -43,6 +43,11 @@ public class User implements java.io.Serializable {
     @NotEmpty(message = "*Please provide your password")
     @Transient
     private String password;
+<<<<<<< HEAD
+=======
+    @NotEmpty(message = "*Please provide a valid contact number")
+    @Length(min = 7, max = 10, message = "*Must have betweem 7 and 10 digits")
+>>>>>>> 7a385d1f8214fa11cffadced137ce845426679a4
     private int contactNumber;
     private Set<Tiendas> tiendases = new HashSet<Tiendas>(0);
     private Set<Role> roles = new HashSet<Role>(0);

@@ -19,14 +19,9 @@ import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.repositories.RoleRepository;
 import com.tribuo.backend.repositories.UserRepository;
 import com.tribuo.backend.services.UserService;
-<<<<<<< HEAD
 import java.io.Console;
 
 @Service("userService")
-=======
-
-@Service
->>>>>>> 7a385d1f8214fa11cffadced137ce845426679a4
 public class UsuarioServiceImpl implements UserService {
 
     @Autowired
@@ -53,7 +48,6 @@ public class UsuarioServiceImpl implements UserService {
         usuRepo.save(u);
     }
 
-<<<<<<< HEAD
     /**
      * @Override public boolean existeCorreo(String usuario) { return
      * usuRepo.existeCorreo(usuario) != 0;
@@ -69,29 +63,7 @@ public class UsuarioServiceImpl implements UserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         Role userRole = roleRepo.findByRole("ADMIN");
-        System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<    "+userRole.getRoleId()+"     >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>><<");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         usuRepo.save(user);
     }
-=======
-    /**@Override
-    public boolean existeCorreo(String usuario) {
-        return usuRepo.existeCorreo(usuario) != 0;
-    }**/
-
-    @Override
-	public User findUserByEmail(String email) {
-		return usuRepo.findByEmail(email);
-	}
-
-	@Override
-	public void saveUser(User user) {
-		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-        user.setActive(1);
-        Role userRole = roleRepo.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-		usuRepo.save(user);
-	}
->>>>>>> 7a385d1f8214fa11cffadced137ce845426679a4
-
 }

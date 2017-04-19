@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tribuo" name="com.tribuo.backend.jpa.Subcategorias" optimistic-lock="version" table="subcategorias">
+    <id name="idSubcategoria" type="java.lang.Integer">
+      <column name="id_subcategoria"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="com.tribuo.backend.jpa.Categorias" fetch="select" name="categorias">
+      <column name="categoria" not-null="true"/>
+    </many-to-one>
+    <property name="nombreSubcategoria" type="string">
+      <column length="30" name="nombre_subcategoria" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="productoses" table="productos">
+      <key>
+        <column name="subcategoria" not-null="true"/>
+      </key>
+      <one-to-many class="com.tribuo.backend.jpa.Productos"/>
+    </set>
+  </class>
+</hibernate-mapping>

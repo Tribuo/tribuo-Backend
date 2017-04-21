@@ -1,6 +1,7 @@
 package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -25,8 +26,8 @@ import org.springframework.data.annotation.Transient;
 @Table(name = "user",
         catalog = "tribuo",
         uniqueConstraints = {
-            @UniqueConstraint(columnNames = "contact_number")
-            , @UniqueConstraint(columnNames = "email")}
+            @UniqueConstraint(columnNames = "contact_number"),
+            @UniqueConstraint(columnNames = "email")}
 )
 public class User implements java.io.Serializable {
 
@@ -136,7 +137,8 @@ public class User implements java.io.Serializable {
         this.contactNumber = contactNumber;
     }
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @JsonIgnore
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     public Set<Tiendas> getTiendases() {
         return this.tiendases;
     }
@@ -145,7 +147,8 @@ public class User implements java.io.Serializable {
         this.tiendases = tiendases;
     }
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", catalog = "tribuo", joinColumns = {
         @JoinColumn(name = "user_id", nullable = false, updatable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "role_id", nullable = false, updatable = false)})

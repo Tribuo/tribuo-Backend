@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -63,7 +64,7 @@ public class Tiendas  implements java.io.Serializable {
         this.idTienda = idTienda;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="propietario", nullable=false)
     public User getUser() {
         return this.user;
@@ -103,7 +104,8 @@ public class Tiendas  implements java.io.Serializable {
         this.razonSocial = razonSocial;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="tiendas")
+    @JsonIgnore
+    @OneToMany(fetch=FetchType.EAGER, mappedBy="tiendas")
     public Set<Sucursales> getSucursaleses() {
         return this.sucursaleses;
     }

@@ -53,7 +53,7 @@ public class ProductosTiendas  implements java.io.Serializable {
         this.id = id;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="id_producto", nullable=false, insertable=false, updatable=false)
     public Productos getProductos() {
         return this.productos;
@@ -63,7 +63,7 @@ public class ProductosTiendas  implements java.io.Serializable {
         this.productos = productos;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="nit_sucursal", nullable=false, insertable=false, updatable=false)
     public Sucursales getSucursales() {
         return this.sucursales;

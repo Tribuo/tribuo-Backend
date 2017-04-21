@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -63,7 +64,8 @@ public class Categorias  implements java.io.Serializable {
         this.nombreCategoria = nombreCategoria;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="categorias")
+    @JsonIgnore
+@OneToMany(fetch=FetchType.EAGER, mappedBy="categorias")
     public Set<Subcategorias> getSubcategoriases() {
         return this.subcategoriases;
     }

@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,6 +22,8 @@ import javax.persistence.TemporalType;
 @Entity
 @Table(name = "compras", catalog = "tribuo"
 )
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+
 public class Compras implements java.io.Serializable {
 
     private Integer idCompra;

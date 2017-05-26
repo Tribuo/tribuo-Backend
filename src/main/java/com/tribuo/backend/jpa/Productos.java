@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -22,6 +23,7 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(name = "productos", catalog = "tribuo", uniqueConstraints = @UniqueConstraint(columnNames = "codigo_barras")
 )
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Productos implements java.io.Serializable {
 
     private Integer idProducto;

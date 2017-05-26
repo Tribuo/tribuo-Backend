@@ -20,4 +20,6 @@ public interface MarcaServices {
     
     public void createMarca(Marcas m);
 
+    public List<Marcas> getMarcasByFrabicante(int id);
+    
 }

@@ -33,4 +33,8 @@ public class MarcaServicesImpl implements MarcaServices {
         marcaRepo.save(m);
     }
 
+    @Override
+    public List<Marcas> getMarcasByFrabicante(int id) {
+       return marcaRepo.getMarcasByFabricantes(id);
+    }
 }

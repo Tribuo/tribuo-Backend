@@ -6,6 +6,7 @@
 package com.tribuo.backend.controllers;
 
 import com.tribuo.backend.jpa.Fabricantes;
+import com.tribuo.backend.jpa.Marcas;
 import com.tribuo.backend.services.FabricanteServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +47,5 @@ public class FabricantesController {
     public ResponseEntity<Void> insertFabricante(@RequestBody Fabricantes fabricante) {
         se.createFabricante(fabricante);
         return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+    }    
 }

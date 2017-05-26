@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -19,6 +20,7 @@ import javax.persistence.Table;
 @Table(name="productos_tiendas"
     ,catalog="tribuo"
 )
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class ProductosTiendas  implements java.io.Serializable {
 
 

@@ -48,4 +48,11 @@ public class MarcasController {
         se.createMarca(marca);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+    
+    @RequestMapping(value = "/fabricante/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Marcas>> getMarcasByFabricante(@PathVariable("id") Integer id) {
+        List<Marcas> marcas = se.getMarcasByFrabicante(id);
+        return new ResponseEntity<>(marcas, HttpStatus.OK);
+    }
 }

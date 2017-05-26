@@ -2,6 +2,7 @@ package com.tribuo.backend.jpa;
 // Generated Apr 14, 2017 8:01:04 PM by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -29,6 +30,7 @@ import org.springframework.data.annotation.Transient;
             @UniqueConstraint(columnNames = "contact_number"),
             @UniqueConstraint(columnNames = "email")}
 )
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements java.io.Serializable {
 
     private Integer userId;

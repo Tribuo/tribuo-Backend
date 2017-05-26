@@ -33,4 +33,9 @@ public class SubcategoriaServicesImpl implements SubcategoriaServices {
         subcatRepo.save(sc);
     }
 
+    @Override
+    public List<Subcategorias> getSubCatByCategoria(Integer id) {
+        return subcatRepo.getSubCatByCategoria(id);
+    }
+
 }

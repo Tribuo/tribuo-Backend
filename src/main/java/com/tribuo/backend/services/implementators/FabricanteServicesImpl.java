@@ -6,6 +6,7 @@
 package com.tribuo.backend.services.implementators;
 
 import com.tribuo.backend.jpa.Fabricantes;
+import com.tribuo.backend.jpa.Marcas;
 import com.tribuo.backend.repositories.FabricantesRepository;
 import com.tribuo.backend.services.FabricanteServices;
 import java.util.List;

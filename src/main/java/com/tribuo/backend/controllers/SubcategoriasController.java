@@ -5,6 +5,7 @@
  */
 package com.tribuo.backend.controllers;
 
+import com.tribuo.backend.jpa.Categorias;
 import com.tribuo.backend.jpa.Subcategorias;
 import com.tribuo.backend.services.SubcategoriaServices;
 import java.util.List;
@@ -47,5 +48,12 @@ public class SubcategoriasController {
     public ResponseEntity<Void> insertSubcategoria(@RequestBody Subcategorias p) {
         se.createSubcategoria(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
+    }
+    
+    @RequestMapping(value = "/categoria/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Subcategorias>> getMarcasByFabricante(@PathVariable("id") Integer id) {
+        List<Subcategorias> marcas = se.getSubCatByCategoria(id);
+        return new ResponseEntity<>(marcas, HttpStatus.OK);
     }
 }

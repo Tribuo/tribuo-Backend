@@ -1,5 +1,3 @@
-
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -56,7 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private String rolesQuery;
 
     @Override
-    protected void configure(AuthenticationManagerBuilder auth) 
+    protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
         auth.
                 jdbcAuthentication()
@@ -64,44 +62,41 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery(rolesQuery)
                 .dataSource(dataSource)
                 .passwordEncoder(bCryptPasswordEncoder);
-            
+
         auth.
                 inMemoryAuthentication()
-                .withUser("user")
-                .password("password")
-                .roles("USER");
-  
+                .withUser("tribuo")
+                .password("BackEndPassword")
+                .roles("ADMIN");
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        /**http.
-                authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-                .authenticated().and().csrf().disable().formLogin()
-                .loginPage("/login").failureUrl("/login?error=true")
-                .defaultSuccessUrl("/admin/home")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .and().logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                .logoutSuccessUrl("/").and().exceptionHandling()
-                .accessDeniedPage("/access-denied");**/
-       http
+        /**http
                 .httpBasic()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/app/**","/logout","/login").permitAll()
-                .anyRequest().authenticated().and()
-                .logout().logoutSuccessUrl("/")
+                .antMatchers("/login").permitAll()
+                .antMatchers("/registration").permitAll()
+                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+                .authenticated()
                 .and().csrf()
                 .csrfTokenRepository(csrfTokenRepository()).and()
-                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);*/
+        /**
+         * http .httpBasic() .and() .authorizeRequests()
+         * .antMatchers("/app/**").permitAll()
+         * .anyRequest().authenticated().and() .logout().logoutSuccessUrl("/")
+         * .usernameParameter("email") .passwordParameter("password")
+         * .permitAll()
+                .and().csrf()
+         */
         
+                 http 
+                     .csrf().disable();
+
     }
 
     @Override
@@ -110,8 +105,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .ignoring()
                 .antMatchers("/resources/**", "/static/**", "/css/**", "/js/**", "/images/**");
     }
-    
-     private Filter csrfHeaderFilter() {
+
+    private Filter csrfHeaderFilter() {
         return new OncePerRequestFilter() {
             @Override
             protected void doFilterInternal(HttpServletRequest request,

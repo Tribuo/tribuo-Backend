@@ -6,6 +6,7 @@
 package com.tribuo.backend.services;
 
 import com.tribuo.backend.jpa.Fabricantes;
+import com.tribuo.backend.jpa.Marcas;
 import java.util.List;
 
 /**
@@ -19,5 +20,6 @@ public interface FabricanteServices {
     public Fabricantes getFabricantesById(int id);
     
     public void createFabricante(Fabricantes fab);
+    
 
 }

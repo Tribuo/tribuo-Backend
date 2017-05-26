@@ -3,6 +3,7 @@ package com.tribuo.backend.jpa;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
@@ -25,6 +26,7 @@ import javax.persistence.UniqueConstraint;
     ,catalog="tribuo"
     , uniqueConstraints = {@UniqueConstraint(columnNames="cedula"), @UniqueConstraint(columnNames="razon_social")} 
 )
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Tiendas  implements java.io.Serializable {
 
 

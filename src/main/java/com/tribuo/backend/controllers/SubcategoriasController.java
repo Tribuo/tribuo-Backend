@@ -5,7 +5,6 @@
  */
 package com.tribuo.backend.controllers;
 
-import com.tribuo.backend.jpa.Categorias;
 import com.tribuo.backend.jpa.Subcategorias;
 import com.tribuo.backend.services.SubcategoriaServices;
 import java.util.List;
@@ -30,6 +29,11 @@ public class SubcategoriasController {
     @Autowired
     SubcategoriaServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Subcategorias> getSubcategoria(@PathVariable("id") Integer id) {
@@ -37,6 +41,10 @@ public class SubcategoriasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Subcategorias>> getSubcategorias() {
@@ -44,15 +52,25 @@ public class SubcategoriasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertSubcategoria(@RequestBody Subcategorias p) {
         se.createSubcategoria(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/categoria/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<List<Subcategorias>> getMarcasByFabricante(@PathVariable("id") Integer id) {
+    public ResponseEntity<List<Subcategorias>> getSubcatByCategoria(@PathVariable("id") Integer id) {
         List<Subcategorias> marcas = se.getSubCatByCategoria(id);
         return new ResponseEntity<>(marcas, HttpStatus.OK);
     }

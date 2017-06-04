@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tribuo.backend.jpa.Distribuidores" table="distribuidores" catalog="tribuo" optimistic-lock="version">
+        <id name="idDistribuidor" type="int">
+            <column name="id_distribuidor" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="fabricantes" class="com.tribuo.backend.jpa.Fabricantes" fetch="select">
+            <column name="fabricante" not-null="true" />
+        </many-to-one>
+        <many-to-one name="marcas" class="com.tribuo.backend.jpa.Marcas" fetch="select">
+            <column name="marca" not-null="true" />
+        </many-to-one>
+        <property name="nombreDistribuidor" type="string">
+            <column name="nombre_distribuidor" length="75" not-null="true" unique="true" />
+        </property>
+        <set name="sucursaleses" table="ditribuidores_sucursales" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="distribuidor" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tribuo.backend.jpa.Sucursales">
+                <column name="sucursal" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

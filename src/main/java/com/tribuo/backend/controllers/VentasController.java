@@ -5,7 +5,6 @@
  */
 package com.tribuo.backend.controllers;
 
-import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.jpa.Ventas;
 import com.tribuo.backend.services.VentaServices;
 import java.util.List;
@@ -30,6 +29,11 @@ public class VentasController {
     @Autowired
     VentaServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Ventas> getVenta(@PathVariable("id") Integer id) {
@@ -37,6 +41,10 @@ public class VentasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Ventas>> getVentas() {
@@ -44,6 +52,11 @@ public class VentasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
     
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertUsuario(@RequestBody Ventas p) {
         se.registerVenta(p);

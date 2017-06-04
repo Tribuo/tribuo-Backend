@@ -29,6 +29,11 @@ public class SucursalesController {
     @Autowired
     SucursalServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Sucursales> getSucursale(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class SucursalesController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Sucursales>> getSucursales() {
@@ -43,6 +52,11 @@ public class SucursalesController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertSucursal(@RequestBody Sucursales p) {
         se.createSucursal(p);

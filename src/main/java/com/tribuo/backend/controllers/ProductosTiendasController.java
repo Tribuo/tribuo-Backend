@@ -28,6 +28,10 @@ public class ProductosTiendasController {
     @Autowired
     ProductoTiendaServices se;
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<ProductosTiendas>> getProductosTiendas() {
@@ -35,6 +39,12 @@ public class ProductosTiendasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param idTienda
+     * @param idProducto
+     * @return
+     */
     @RequestMapping(value = "/{idTienda}-{idProducto}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<ProductosTiendas> getProductoTiendaById(@PathVariable("idTienda") Integer idTienda, @PathVariable("idProducto") Integer idProducto) {

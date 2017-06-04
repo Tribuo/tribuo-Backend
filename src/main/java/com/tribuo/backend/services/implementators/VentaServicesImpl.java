@@ -17,6 +17,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class VentaServicesImpl implements VentaServices {
 
@@ -26,16 +30,29 @@ public class VentaServicesImpl implements VentaServices {
     @Autowired
     ProductosTiendasRepository prodTienRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Ventas> getVentas() {
         return ventRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Ventas getVentasById(int id) {
         return ventRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param venta
+     */
     @Override
     public void registerVenta(Ventas venta) {
         Productos p = venta.getProductos();
@@ -43,7 +60,7 @@ public class VentaServicesImpl implements VentaServices {
         ProductosTiendasId ptid = new ProductosTiendasId(p.getIdProducto(), s.getIdSucursal());
         if (!prodTienRepo.exists(ptid)) {
             ProductosTiendas pt = prodTienRepo.findOne(ptid);
-            pt.setCantidad(pt.getCantidad()-venta.getCantidad());
+            pt.setCantidad(pt.getCantidad() - venta.getCantidad());
         }
 
     }

@@ -13,12 +13,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class ProductoTiendaServicesImpl implements ProductoTiendaServices {
 
     @Autowired
     ProductosTiendasRepository prodTienRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<ProductosTiendas> getProductosTiendas() {
 
@@ -26,16 +34,32 @@ public class ProductoTiendaServicesImpl implements ProductoTiendaServices {
 
     }
 
+    /**
+     *
+     * @param tiendaId
+     * @param productoId
+     * @return
+     */
     @Override
     public ProductosTiendas getProductoTiendaById(int tiendaId, int productoId) {
         return prodTienRepo.getProductoTiendaById(tiendaId, productoId);
     }
 
+    /**
+     *
+     * @param pt
+     */
     @Override
     public void createProductoTienda(ProductosTiendas pt) {
         prodTienRepo.save(pt);
     }
 
+    /**
+     *
+     * @param sucurusal
+     * @param produto
+     * @param precio
+     */
     @Override
     public void updateProdTiendaPrecio(int sucurusal, int produto, int precio) {
         ProductosTiendasId ptID = new ProductosTiendasId(sucurusal, produto);
@@ -44,6 +68,12 @@ public class ProductoTiendaServicesImpl implements ProductoTiendaServices {
         prodTienRepo.save(pt);
     }
 
+    /**
+     *
+     * @param sucurusal
+     * @param produto
+     * @param cantidad
+     */
     @Override
     public void updateProdTiendaCantidad(int sucurusal, int produto, int cantidad) {
         ProductosTiendasId ptID = new ProductosTiendasId(sucurusal, produto);

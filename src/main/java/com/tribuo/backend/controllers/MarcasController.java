@@ -29,6 +29,11 @@ public class MarcasController {
     @Autowired
     MarcaServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Marcas> getUsuario(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class MarcasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Marcas>> getUsuarios() {
@@ -43,12 +52,22 @@ public class MarcasController {
         return new ResponseEntity<>(m, HttpStatus.OK);
     }
     
+    /**
+     *
+     * @param marca
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertMarca(@RequestBody Marcas marca) {
         se.createMarca(marca);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/fabricante/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Marcas>> getMarcasByFabricante(@PathVariable("id") Integer id) {

@@ -41,18 +41,24 @@ Contributor(s):
 -->
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="tribuo"/>
+  <table-filter match-name="role"/>
+  <table-filter match-name="user_role"/>
+  <table-filter match-name="ditribuidores_sucursales"/>
+  <table-filter match-name="especificos"/>
+  <table-filter match-name="propietarios_fabricantes"/>
+  <table-filter match-name="categorias"/>
+  <table-filter match-name="propietarios"/>
+  <table-filter match-name="presentaciones"/>
+  <table-filter match-name="user"/>
+  <table-filter match-name="compras"/>
+  <table-filter match-name="sucursales"/>
+  <table-filter match-name="productos"/>
   <table-filter match-name="marcas"/>
   <table-filter match-name="productos_tiendas"/>
-  <table-filter match-name="productos"/>
-  <table-filter match-name="sucursales"/>
-  <table-filter match-name="user_role"/>
-  <table-filter match-name="ventas"/>
+  <table-filter match-name="distribuidores"/>
+  <table-filter match-name="productos_especifico"/>
   <table-filter match-name="subcategorias"/>
   <table-filter match-name="tiendas"/>
-  <table-filter match-name="user"/>
   <table-filter match-name="fabricantes"/>
-  <table-filter match-name="presentaciones"/>
-  <table-filter match-name="compras"/>
-  <table-filter match-name="categorias"/>
-  <table-filter match-name="role"/>
+  <table-filter match-name="ventas"/>
 </hibernate-reverse-engineering>

@@ -16,6 +16,12 @@ import org.springframework.data.repository.query.Param;
  * @author Camilo Aguado
  */
 public interface MarcasRepository extends JpaRepository<Marcas, Integer> {
-@Query(value="SELECT * FROM marcas WHERE fabricante = :id", nativeQuery = true)
-    public List<Marcas> getMarcasByFabricantes(@Param("id")int fabricante);
+
+    /**
+     *
+     * @param fabricante
+     * @return
+     */
+    @Query(value = "SELECT * FROM marcas WHERE fabricante = :id", nativeQuery = true)
+    public List<Marcas> getMarcasByFabricantes(@Param("id") int fabricante);
 }

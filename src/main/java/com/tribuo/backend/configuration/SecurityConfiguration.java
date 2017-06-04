@@ -53,6 +53,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Value("${spring.queries.roles-query}")
     private String rolesQuery;
 
+    /**
+     *
+     * @param auth
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth)
             throws Exception {
@@ -71,34 +76,40 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     }
 
+    /**
+     *
+     * @param http
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
-        /**http
-                .httpBasic()
-                .and()
-                .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/registration").permitAll()
-                .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
-                .authenticated()
-                .and().csrf()
-                .csrfTokenRepository(csrfTokenRepository()).and()
-                .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);*/
+        /**
+         * http .httpBasic() .and() .authorizeRequests()
+         * .antMatchers("/login").permitAll()
+         * .antMatchers("/registration").permitAll()
+         * .antMatchers("/admin/**").hasAuthority("ADMIN").anyRequest()
+         * .authenticated() .and().csrf()
+         * .csrfTokenRepository(csrfTokenRepository()).and()
+         * .addFilterAfter(csrfHeaderFilter(), CsrfFilter.class);
+         */
         /**
          * http .httpBasic() .and() .authorizeRequests()
          * .antMatchers("/app/**").permitAll()
          * .anyRequest().authenticated().and() .logout().logoutSuccessUrl("/")
          * .usernameParameter("email") .passwordParameter("password")
-         * .permitAll()
-                .and().csrf()
+         * .permitAll() .and().csrf()
          */
-        
-                 http 
-                     .csrf().disable();
+        http
+                .csrf().disable();
 
     }
 
+    /**
+     *
+     * @param web
+     * @throws Exception
+     */
     @Override
     public void configure(WebSecurity web) throws Exception {
         web

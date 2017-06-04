@@ -14,10 +14,23 @@ import java.util.List;
  */
 public interface PresentacionServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Presentaciones> getPresentaciones();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Presentaciones getPresentacionesById(int id);
-    
+
+    /**
+     *
+     * @param p
+     */
     public void createPresentacion(Presentaciones p);
 
 }

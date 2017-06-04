@@ -12,27 +12,49 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class SubcategoriaServicesImpl implements SubcategoriaServices {
 
     @Autowired
     SubcategoriasRepository subcatRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Subcategorias> getSubcategorias() {
         return subcatRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Subcategorias getSubcategoriaById(int id) {
         return subcatRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param sc
+     */
     @Override
     public void createSubcategoria(Subcategorias sc) {
         subcatRepo.save(sc);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public List<Subcategorias> getSubCatByCategoria(Integer id) {
         return subcatRepo.getSubCatByCategoria(id);

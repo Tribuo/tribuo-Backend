@@ -14,15 +14,37 @@ import java.util.List;
  */
 public interface UserService {
 
+    /**
+     *
+     * @return
+     */
     public List<User> getUsuarios();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public User getUsuariosById(int id);
 
+    /**
+     *
+     * @param u
+     */
     public void createUsuario(User u);
 
-   // public boolean existeCorreo(String email);
+    // public boolean existeCorreo(String email);
 
+    /**
+     *
+     * @param email
+     * @return
+     */
     public User findUserByEmail(String email);
 
+    /**
+     *
+     * @param user
+     */
     public void saveUser(User user);
 }

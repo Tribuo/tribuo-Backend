@@ -14,9 +14,22 @@ import java.util.List;
  */
 public interface CompraServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Compras> getCompras();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Compras getComprasById(int id);
 
+    /**
+     *
+     * @param compra
+     */
     public void registerCompra(Compras compra);
 }

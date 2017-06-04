@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tribuo.backend.jpa.Presentaciones" table="presentaciones" catalog="tribuo" optimistic-lock="version">
+        <id name="idPresentacion" type="java.lang.Integer">
+            <column name="id_presentacion" />
+            <generator class="identity" />
+        </id>
+        <property name="cantidad" type="big_decimal">
+            <column name="cantidad" precision="10" scale="3" not-null="true" />
+        </property>
+        <property name="unidadMedida" type="string">
+            <column name="unidad_medida" length="3" not-null="true" />
+        </property>
+        <property name="empaque" type="string">
+            <column name="empaque" length="50" not-null="true" />
+        </property>
+        <property name="numeroUnidades" type="int">
+            <column name="numero_unidades" not-null="true" />
+        </property>
+        <set name="productoses" table="productos" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="tipo_presentacion" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.Productos" />
+        </set>
+    </class>
+</hibernate-mapping>

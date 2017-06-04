@@ -29,6 +29,11 @@ public class CategoriasController {
     @Autowired
     CategoriaServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Categorias> getCategoria(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class CategoriasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Categorias>> getCategorias() {
@@ -43,6 +52,11 @@ public class CategoriasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param categoria
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertCategoria(@RequestBody Categorias categoria) {
         se.insertCategoria(categoria);

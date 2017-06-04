@@ -14,13 +14,35 @@ import java.util.List;
  */
 public interface SucursalServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Sucursales> getSucursales();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Sucursales getSucursalesById(int id);
 
+    /**
+     *
+     * @param tienda
+     * @return
+     */
     public List<Sucursales> getSucursalesByTienda(int tienda);
-    
+
+    /**
+     *
+     * @param s
+     */
     public void createSucursal(Sucursales s);
-    
+
+    /**
+     *
+     * @param s
+     */
     public void deleteSucursal(Sucursales s);
 }

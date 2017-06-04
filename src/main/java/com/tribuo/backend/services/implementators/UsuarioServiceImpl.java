@@ -19,8 +19,11 @@ import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.repositories.RoleRepository;
 import com.tribuo.backend.repositories.UserRepository;
 import com.tribuo.backend.services.UserService;
-import java.io.Console;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service("userService")
 public class UsuarioServiceImpl implements UserService {
 
@@ -33,37 +36,55 @@ public class UsuarioServiceImpl implements UserService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<User> getUsuarios() {
         return usuRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public User getUsuariosById(int id) {
         return usuRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param u
+     */
     @Override
     public void createUsuario(User u) {
         usuRepo.save(u);
     }
 
     /**
+     * @param email
+     * @return 
      * @Override public boolean existeCorreo(String usuario) { return
-     * usuRepo.existeCorreo(usuario) != 0;
-    }*
+     * usuRepo.existeCorreo(usuario) != 0; }*
      */
     @Override
     public User findUserByEmail(String email) {
         return usuRepo.findByEmail(email);
     }
 
+    /**
+     *
+     * @param user
+     */
     @Override
     public void saveUser(User user) {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         Role userRole = roleRepo.findByRole("ADMIN");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+        user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         usuRepo.save(user);
     }
 }

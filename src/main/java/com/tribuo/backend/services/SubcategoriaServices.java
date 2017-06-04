@@ -14,12 +14,30 @@ import java.util.List;
  */
 public interface SubcategoriaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Subcategorias> getSubcategorias();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Subcategorias getSubcategoriaById(int id);
-    
+
+    /**
+     *
+     * @param sc
+     */
     public void createSubcategoria(Subcategorias sc);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public List<Subcategorias> getSubCatByCategoria(Integer id);
 
 }

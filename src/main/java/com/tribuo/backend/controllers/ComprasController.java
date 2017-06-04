@@ -29,6 +29,11 @@ public class ComprasController {
     @Autowired
     CompraServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Compras> getCompra(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class ComprasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Compras>> getCompras() {
@@ -43,6 +52,11 @@ public class ComprasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param compra
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertCompra(@RequestBody Compras compra) {
         se.registerCompra(compra);

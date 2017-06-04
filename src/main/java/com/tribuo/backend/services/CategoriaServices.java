@@ -14,10 +14,23 @@ import java.util.List;
  */
 public interface CategoriaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Categorias> getCategorias();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Categorias getCategoriasById(int id);
-    
+
+    /**
+     *
+     * @param categoria
+     */
     void insertCategoria(Categorias categoria);
 
 }

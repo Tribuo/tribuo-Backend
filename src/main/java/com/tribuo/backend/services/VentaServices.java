@@ -14,10 +14,23 @@ import java.util.List;
  */
 public interface VentaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Ventas> getVentas();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Ventas getVentasById(int id);
 
+    /**
+     *
+     * @param venta
+     */
     public void registerVenta(Ventas venta);
 
 }

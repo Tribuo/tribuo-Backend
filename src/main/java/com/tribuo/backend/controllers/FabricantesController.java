@@ -6,7 +6,6 @@
 package com.tribuo.backend.controllers;
 
 import com.tribuo.backend.jpa.Fabricantes;
-import com.tribuo.backend.jpa.Marcas;
 import com.tribuo.backend.services.FabricanteServices;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +29,11 @@ public class FabricantesController {
     @Autowired
     FabricanteServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Fabricantes> getFabricante(@PathVariable("id") Integer id) {
@@ -37,15 +41,25 @@ public class FabricantesController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Fabricantes>> getFabricantes() {
         List<Fabricantes> u = se.getFabricantes();
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
+
+    /**
+     *
+     * @param fabricante
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertFabricante(@RequestBody Fabricantes fabricante) {
         se.createFabricante(fabricante);
         return new ResponseEntity<>(HttpStatus.CREATED);
-    }    
+    }
 }

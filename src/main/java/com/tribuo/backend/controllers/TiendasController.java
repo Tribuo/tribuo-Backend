@@ -29,6 +29,11 @@ public class TiendasController {
     @Autowired
     TiendaServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Tiendas> getTienda(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class TiendasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Tiendas>> getTiendas() {
@@ -43,6 +52,11 @@ public class TiendasController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertTienda(@RequestBody Tiendas p) {
         se.createTienda(p);

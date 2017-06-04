@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tribuo.backend.jpa.Propietarios" table="propietarios" catalog="tribuo" optimistic-lock="version">
+        <id name="idPropietario" type="int">
+            <column name="id_propietario" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombrePropietario" type="string">
+            <column name="nombre_propietario" length="75" not-null="true" unique="true" />
+        </property>
+        <set name="fabricanteses" table="propietarios_fabricantes" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="propietario" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tribuo.backend.jpa.Fabricantes">
+                <column name="fabricante" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

@@ -29,6 +29,11 @@ public class PresentacionesController {
     @Autowired
     PresentacionServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Presentaciones> getPresentacion(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class PresentacionesController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Presentaciones>> getPresentaciones() {
@@ -44,6 +53,11 @@ public class PresentacionesController {
 
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertPresentacion(@RequestBody Presentaciones p) {
         se.createPresentacion(p);

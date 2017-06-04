@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Apr 14, 2017 8:01:05 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
   <class catalog="tribuo" name="com.tribuo.backend.jpa.Productos" optimistic-lock="version" table="productos">
     <id name="idProducto" type="java.lang.Integer">
@@ -13,9 +13,6 @@
     <many-to-one class="com.tribuo.backend.jpa.Presentaciones" fetch="select" name="presentaciones">
       <column name="tipo_presentacion" not-null="true"/>
     </many-to-one>
-    <many-to-one class="com.tribuo.backend.jpa.Subcategorias" fetch="select" name="subcategorias">
-      <column name="subcategoria" not-null="true"/>
-    </many-to-one>
     <property name="nombreProducto" type="string">
       <column length="20" name="nombre_producto" not-null="true"/>
     </property>
@@ -23,7 +20,7 @@
       <column name="precio_sugerido"/>
     </property>
     <property name="codigoBarras" type="string">
-      <column length="20" name="codigo_barras" not-null="true" unique="true"/>
+      <column length="20" name="codigo_barras" unique="true"/>
     </property>
     <property name="descripcion" type="string">
       <column length="200" name="descripcion"/>
@@ -33,19 +30,27 @@
     </property>
     <set fetch="select" inverse="true" lazy="true" name="ventases" table="ventas">
       <key>
-        <column name="id_producto" not-null="true"/>
+        <column name="producto" not-null="true"/>
       </key>
       <one-to-many class="com.tribuo.backend.jpa.Ventas"/>
     </set>
+    <set fetch="select" inverse="false" lazy="true" name="especificos" table="productos_especifico">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <many-to-many entity-name="com.tribuo.backend.jpa.Especificos">
+        <column name="especificos" not-null="true"/>
+      </many-to-many>
+    </set>
     <set fetch="select" inverse="true" lazy="true" name="comprases" table="compras">
       <key>
-        <column name="id_producto" not-null="true"/>
+        <column name="producto" not-null="true"/>
       </key>
       <one-to-many class="com.tribuo.backend.jpa.Compras"/>
     </set>
     <set fetch="select" inverse="true" lazy="true" name="productosTiendases" table="productos_tiendas">
       <key>
-        <column name="id_producto" not-null="true"/>
+        <column name="producto" not-null="true"/>
       </key>
       <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas"/>
     </set>

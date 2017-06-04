@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="com.tribuo.backend.jpa.Sucursales" table="sucursales" catalog="tribuo" optimistic-lock="version">
+        <id name="idSucursal" type="int">
+            <column name="id_sucursal" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tiendas" class="com.tribuo.backend.jpa.Tiendas" fetch="select">
+            <column name="tienda" not-null="true" />
+        </many-to-one>
+        <property name="direccion" type="string">
+            <column name="direccion" length="75" not-null="true" />
+        </property>
+        <property name="ciudad" type="string">
+            <column name="ciudad" length="75" not-null="true" />
+        </property>
+        <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sucursal" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.Ventas" />
+        </set>
+        <set name="productosTiendases" table="productos_tiendas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sucursal" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas" />
+        </set>
+        <set name="comprases" table="compras" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="sucursal" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.Compras" />
+        </set>
+        <set name="distribuidoreses" table="ditribuidores_sucursales" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="sucursal" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tribuo.backend.jpa.Distribuidores">
+                <column name="distribuidor" not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>

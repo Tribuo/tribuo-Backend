@@ -6,7 +6,6 @@
 package com.tribuo.backend.services;
 
 import com.tribuo.backend.jpa.Fabricantes;
-import com.tribuo.backend.jpa.Marcas;
 import java.util.List;
 
 /**
@@ -15,11 +14,23 @@ import java.util.List;
  */
 public interface FabricanteServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Fabricantes> getFabricantes();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Fabricantes getFabricantesById(int id);
-    
+
+    /**
+     *
+     * @param fab
+     */
     public void createFabricante(Fabricantes fab);
-    
 
 }

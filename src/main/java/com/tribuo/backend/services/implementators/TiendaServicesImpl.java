@@ -12,29 +12,50 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class TiendaServicesImpl implements TiendaServices {
 
     @Autowired
     TiendasRepository tienRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Tiendas> getTiendas() {
         return tienRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Tiendas getTiendasById(int id) {
         return tienRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param t
+     */
     @Override
     public void createTienda(Tiendas t) {
         tienRepo.save(t);
     }
-    
+
+    /**
+     *
+     * @param t
+     */
     @Override
-    public void deleteTienda(Tiendas t){
+    public void deleteTienda(Tiendas t) {
         tienRepo.delete(t);
     }
 

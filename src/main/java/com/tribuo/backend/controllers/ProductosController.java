@@ -29,6 +29,11 @@ public class ProductosController {
     @Autowired
     ProductoServices se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Productos> getProducto(@PathVariable("id") Integer id) {
@@ -36,6 +41,10 @@ public class ProductosController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<Productos>> getProductos() {
@@ -43,6 +52,11 @@ public class ProductosController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
     
+    /**
+     *
+     * @param code
+     * @return
+     */
     @RequestMapping(value = "/codigo/{code}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Productos> getOPriductoByCode(@PathVariable("code") String code){
@@ -50,6 +64,11 @@ public class ProductosController {
         return new ResponseEntity<>(p, HttpStatus.OK);
     }
     
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertProducto(@RequestBody Productos p) {
         se.createProducto(p);

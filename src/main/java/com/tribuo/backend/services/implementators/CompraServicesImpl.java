@@ -8,7 +8,6 @@ package com.tribuo.backend.services.implementators;
 import com.tribuo.backend.jpa.Compras;
 import com.tribuo.backend.jpa.Productos;
 import com.tribuo.backend.jpa.ProductosTiendas;
-import com.tribuo.backend.jpa.ProductosTiendasId;
 import com.tribuo.backend.jpa.Sucursales;
 import com.tribuo.backend.repositories.ComprasRepository;
 import com.tribuo.backend.repositories.ProductosTiendasRepository;
@@ -17,6 +16,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class CompraServicesImpl implements CompraServices {
 
@@ -25,16 +28,29 @@ public class CompraServicesImpl implements CompraServices {
     @Autowired
     ProductosTiendasRepository prodTienRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Compras> getCompras() {
         return compRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Compras getComprasById(int id) {
         return compRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param compra
+     */
     @Override
     public void registerCompra(Compras compra) {
         compRepo.save(compra);
@@ -45,9 +61,7 @@ public class CompraServicesImpl implements CompraServices {
             pt = prodTienRepo.getProductoTiendaById(s.getIdSucursal(), p.getIdProducto());
             pt.setCantidad(pt.getCantidad() + compra.getCantidad());
         } catch (Exception e) {
-            ProductosTiendasId ptID = new ProductosTiendasId(s.getIdSucursal(), p.getIdProducto());
-            pt = new ProductosTiendas(ptID, p, s, compra.getCantidad(), 0);
-
+          pt = new ProductosTiendas(p, s, compra.getCantidad(), 0);
         }
         prodTienRepo.save(pt);
     }

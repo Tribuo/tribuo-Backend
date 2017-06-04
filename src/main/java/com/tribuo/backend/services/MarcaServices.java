@@ -14,12 +14,30 @@ import java.util.List;
  */
 public interface MarcaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Marcas> getMarcas();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Marcas getMarcasById(int id);
-    
+
+    /**
+     *
+     * @param m
+     */
     public void createMarca(Marcas m);
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public List<Marcas> getMarcasByFrabicante(int id);
-    
+
 }

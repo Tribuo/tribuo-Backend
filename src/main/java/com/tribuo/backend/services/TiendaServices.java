@@ -14,11 +14,28 @@ import java.util.List;
  */
 public interface TiendaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Tiendas> getTiendas();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Tiendas getTiendasById(int id);
 
+    /**
+     *
+     * @param t
+     */
     public void createTienda(Tiendas t);
-    
+
+    /**
+     *
+     * @param t
+     */
     public void deleteTienda(Tiendas t);
 }

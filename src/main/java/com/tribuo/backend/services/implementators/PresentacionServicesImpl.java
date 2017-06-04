@@ -12,22 +12,39 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class PresentacionServicesImpl implements PresentacionServices {
 
     @Autowired
     PresentacionesRepository presRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Presentaciones> getPresentaciones() {
         return presRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Presentaciones getPresentacionesById(int id) {
         return presRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param p
+     */
     @Override
     public void createPresentacion(Presentaciones p) {
         presRepo.save(p);

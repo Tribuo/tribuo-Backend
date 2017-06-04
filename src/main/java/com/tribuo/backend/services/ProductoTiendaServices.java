@@ -14,13 +14,39 @@ import java.util.List;
  */
 public interface ProductoTiendaServices {
 
+    /**
+     *
+     * @return
+     */
     public List<ProductosTiendas> getProductosTiendas();
 
+    /**
+     *
+     * @param tiendaId
+     * @param productoId
+     * @return
+     */
     public ProductosTiendas getProductoTiendaById(int tiendaId, int productoId);
 
+    /**
+     *
+     * @param pt
+     */
     public void createProductoTienda(ProductosTiendas pt);
 
+    /**
+     *
+     * @param sucurusal
+     * @param produto
+     * @param precio
+     */
     public void updateProdTiendaPrecio(int sucurusal, int produto, int precio);
-    
+
+    /**
+     *
+     * @param sucurusal
+     * @param produto
+     * @param cantidad
+     */
     public void updateProdTiendaCantidad(int sucurusal, int produto, int cantidad);
 }

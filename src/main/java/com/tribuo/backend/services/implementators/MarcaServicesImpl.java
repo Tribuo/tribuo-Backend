@@ -12,29 +12,51 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * @author Camilo Aguado
+ */
 @Service
 public class MarcaServicesImpl implements MarcaServices {
 
     @Autowired
     MarcasRepository marcaRepo;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public List<Marcas> getMarcas() {
         return marcaRepo.findAll();
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public Marcas getMarcasById(int id) {
         return marcaRepo.findOne(id);
     }
 
+    /**
+     *
+     * @param m
+     */
     @Override
     public void createMarca(Marcas m) {
         marcaRepo.save(m);
     }
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @Override
     public List<Marcas> getMarcasByFrabicante(int id) {
-       return marcaRepo.getMarcasByFabricantes(id);
+        return marcaRepo.getMarcasByFabricantes(id);
     }
 }

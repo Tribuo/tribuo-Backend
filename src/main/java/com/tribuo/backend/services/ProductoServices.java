@@ -14,12 +14,30 @@ import java.util.List;
  */
 public interface ProductoServices {
 
+    /**
+     *
+     * @return
+     */
     public List<Productos> getProductos();
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     public Productos getProductosById(int id);
 
+    /**
+     *
+     * @param p
+     */
     public void createProducto(Productos p);
-    
+
+    /**
+     *
+     * @param code
+     * @return
+     */
     public Productos getProductoByCode(String code);
-    
+
 }

@@ -17,16 +17,34 @@ import org.springframework.data.repository.query.Param;
  */
 public interface ProductosTiendasRepository extends JpaRepository<ProductosTiendas, ProductosTiendasId> {
 
-    @Query(value = "SELECT * FROM productos_tiendas WHERE nit_sucursal = :idTienda AND id_producto = :idProducto", nativeQuery = true)
+    /**
+     *
+     * @param idTienda
+     * @param idProducto
+     * @return
+     */
+    @Query(value = "SELECT * FROM productos_tiendas WHERE sucursal = :idTienda AND producto = :idProducto", nativeQuery = true)
     public ProductosTiendas getProductoTiendaById(@Param("idTienda") int idTienda, @Param("idProducto") int idProducto);
 
+    /**
+     *
+     * @param nitSucursal
+     * @param ipProducto
+     * @param cantidad
+     */
     @Query(value = "UPDATE productos_tiendas"
             + "SET cantidad = :cantidad"
-            + "WHERE nit_sucursal = :sucursal AND id_producto = :producto", nativeQuery = true)
+            + "WHERE sucursal = :sucursal AND producto = :producto", nativeQuery = true)
     public void updateProductoTiendaCantidad(@Param("sucursal") int nitSucursal, @Param("producto") int ipProducto, @Param("cantidad") int cantidad);
 
+    /**
+     *
+     * @param nitSucursal
+     * @param ipProducto
+     * @param precio
+     */
     @Query(value = "UPDATE productos_tiendas"
             + "SET precio = :precio"
-            + "WHERE nit_sucursal = :sucursal AND id_producto = :producto", nativeQuery = true)
+            + "WHERE sucursal = :sucursal AND producto = :producto", nativeQuery = true)
     public void updateProductoTiendaPrecio(@Param("sucursal") int nitSucursal, @Param("producto") int ipProducto, @Param("precio") int precio);
 }

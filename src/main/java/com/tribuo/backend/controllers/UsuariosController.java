@@ -30,6 +30,11 @@ public class UsuariosController {
     @Autowired
     UserService se;
 
+    /**
+     *
+     * @param id
+     * @return
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<User> getUsuario(@PathVariable("id") Integer id) {
@@ -37,6 +42,10 @@ public class UsuariosController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @return
+     */
     @RequestMapping(value = "/all", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<List<User>> getUsuarios() {
@@ -44,6 +53,11 @@ public class UsuariosController {
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
 
+    /**
+     *
+     * @param p
+     * @return
+     */
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public ResponseEntity<Void> insertUsuario(@RequestBody User p) {
         se.createUsuario(p);

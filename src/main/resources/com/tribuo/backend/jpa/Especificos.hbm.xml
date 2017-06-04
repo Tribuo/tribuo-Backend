@@ -6,7 +6,7 @@
     <class name="com.tribuo.backend.jpa.Especificos" table="especificos" catalog="tribuo" optimistic-lock="version">
         <id name="idEspecificos" type="int">
             <column name="id_especificos" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
         <many-to-one name="subcategorias" class="com.tribuo.backend.jpa.Subcategorias" fetch="select">
             <column name="subcategoria" not-null="true" />

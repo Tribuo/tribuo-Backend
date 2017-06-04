@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -66,6 +68,7 @@ public class Especificos implements java.io.Serializable {
      * @return
      */
     @Id
+    @GeneratedValue(strategy = IDENTITY)
     @Column(name = "id_especificos", unique = true, nullable = false)
     public int getIdEspecificos() {
         return this.idEspecificos;
@@ -124,7 +127,7 @@ public class Especificos implements java.io.Serializable {
         @JoinColumn(name = "especificos", nullable = false, updatable = false)}, inverseJoinColumns = {
         @JoinColumn(name = "producto", nullable = false, updatable = false)})
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public Set<Productos> getProductoses() {
+    public Set<Productos> getProductoses() {
         return this.productoses;
     }
 

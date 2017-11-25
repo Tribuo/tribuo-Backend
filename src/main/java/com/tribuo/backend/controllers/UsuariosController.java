@@ -7,7 +7,9 @@ package com.tribuo.backend.controllers;
 
 import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.services.*;
+import java.security.Principal;
 import java.util.List;
+import org.opensaml.saml.saml2.metadata.EmailAddress;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,11 +65,16 @@ public class UsuariosController {
         se.createUsuario(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-/**
-    @RequestMapping(value = "/existe/{username}", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/existe/{correo:.+}", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<Boolean> existeUsuario(@PathVariable("username") String usuario) {
-        return new ResponseEntity<>(se.existeCorreo(usuario), HttpStatus.OK);
+    public ResponseEntity<Boolean> existeUsuario(@PathVariable("correo") String usuario) {
+        
+        return new ResponseEntity<>(se.userExistByEmail(usuario), HttpStatus.OK);
     }
-    **/
+    
+    	@RequestMapping("/user")
+	public Principal sayHello(Principal principal) {
+		return principal;
+	}
 }

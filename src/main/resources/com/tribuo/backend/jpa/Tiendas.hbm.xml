@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 28, 2017 12:35:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tribuo.backend.jpa.Tiendas" table="tiendas" catalog="tribuo" optimistic-lock="version">
         <id name="idTienda" type="java.lang.Integer">
@@ -11,10 +11,10 @@
         <many-to-one name="user" class="com.tribuo.backend.jpa.User" fetch="select">
             <column name="propietario" not-null="true" />
         </many-to-one>
-        <property name="nit" type="java.lang.Integer">
+        <property name="nit" type="java.lang.Long">
             <column name="nit" />
         </property>
-        <property name="cedula" type="int">
+        <property name="cedula" type="java.lang.Long">
             <column name="cedula" not-null="true" unique="true" />
         </property>
         <property name="razonSocial" type="string">

@@ -7,6 +7,7 @@ package com.tribuo.backend.services;
 
 import com.tribuo.backend.jpa.User;
 import java.util.List;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -34,7 +35,6 @@ public interface UserService {
     public void createUsuario(User u);
 
     // public boolean existeCorreo(String email);
-
     /**
      *
      * @param email
@@ -47,4 +47,10 @@ public interface UserService {
      * @param user
      */
     public void saveUser(User user);
+
+    public PasswordEncoder getPasswordEncoder();
+
+    public void save(User user);
+    
+    public boolean userExistByEmail(String email);
 }

@@ -1,9 +1,10 @@
 package com.tribuo.backend.jpa;
-// Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1
+// Generated Oct 28, 2017 12:35:33 PM by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,28 +38,14 @@ public class User implements java.io.Serializable {
     private String lastName;
     private String name;
     private String password;
-    private int contactNumber;
-    private Set<Tiendas> tiendases;
-    private Set<Role> roles = new HashSet<>(0);
+    private Long contactNumber;
+    private Set<Tiendas> tiendases = new HashSet<Tiendas>(0);
+    private Set<Role> roles = new HashSet<Role>(0);
 
-    /**
-     *
-     */
     public User() {
-        this.tiendases = new HashSet<>(0);
     }
 
-    /**
-     *
-     * @param active
-     * @param email
-     * @param lastName
-     * @param name
-     * @param password
-     * @param contactNumber
-     */
-    public User(int active, String email, String lastName, String name, String password, int contactNumber) {
-        this.tiendases = new HashSet<>(0);
+    public User(int active, String email, String lastName, String name, String password, Long contactNumber) {
         this.active = active;
         this.email = email;
         this.lastName = lastName;
@@ -67,19 +54,7 @@ public class User implements java.io.Serializable {
         this.contactNumber = contactNumber;
     }
 
-    /**
-     *
-     * @param active
-     * @param email
-     * @param lastName
-     * @param name
-     * @param password
-     * @param contactNumber
-     * @param tiendases
-     * @param roles
-     */
-    public User(int active, String email, String lastName, String name, String password, int contactNumber, Set<Tiendas> tiendases, Set<Role> roles) {
-        this.tiendases = new HashSet<>(0);
+    public User(int active, String email, String lastName, String name, String password, Long contactNumber, Set<Tiendas> tiendases, Set<Role> roles) {
         this.active = active;
         this.email = email;
         this.lastName = lastName;
@@ -90,149 +65,88 @@ public class User implements java.io.Serializable {
         this.roles = roles;
     }
 
-    /**
-     *
-     * @return
-     */
+    public User(String email, String password, List<Role> roles) {
+        this.email = email;
+        this.password = password;
+        this.roles.addAll(roles);
+    }
+
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "user_id", unique = true, nullable = false)
     public Integer getUserId() {
         return this.userId;
     }
 
-    /**
-     *
-     * @param userId
-     */
     public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "active", nullable = false)
     public int getActive() {
         return this.active;
     }
 
-    /**
-     *
-     * @param active
-     */
     public void setActive(int active) {
         this.active = active;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "email", unique = true, nullable = false, length = 20)
     public String getEmail() {
         return this.email;
     }
 
-    /**
-     *
-     * @param email
-     */
     public void setEmail(String email) {
         this.email = email;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "last_name", nullable = false, length = 20)
     public String getLastName() {
         return this.lastName;
     }
 
-    /**
-     *
-     * @param lastName
-     */
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "name", nullable = false, length = 20)
     public String getName() {
         return this.name;
     }
 
-    /**
-     *
-     * @param name
-     */
     public void setName(String name) {
         this.name = name;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "password", nullable = false)
     public String getPassword() {
         return this.password;
     }
 
-    /**
-     *
-     * @param password
-     */
     public void setPassword(String password) {
         this.password = password;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "contact_number", unique = true, nullable = false)
-    public int getContactNumber() {
+    public Long getContactNumber() {
         return this.contactNumber;
     }
 
-    /**
-     *
-     * @param contactNumber
-     */
-    public void setContactNumber(int contactNumber) {
+    public void setContactNumber(Long contactNumber) {
         this.contactNumber = contactNumber;
     }
 
-    /**
-     *
-     * @return
-     */
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
     public Set<Tiendas> getTiendases() {
         return this.tiendases;
     }
 
-    /**
-     *
-     * @param tiendases
-     */
     public void setTiendases(Set<Tiendas> tiendases) {
         this.tiendases = tiendases;
     }
 
-    /**
-     *
-     * @return
-     */
-    @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", catalog = "tribuo", joinColumns = {
         @JoinColumn(name = "user_id", nullable = false, updatable = false)}, inverseJoinColumns = {
@@ -241,10 +155,6 @@ public class User implements java.io.Serializable {
         return this.roles;
     }
 
-    /**
-     *
-     * @param roles
-     */
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }

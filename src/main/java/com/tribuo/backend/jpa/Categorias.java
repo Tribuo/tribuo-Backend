@@ -1,5 +1,5 @@
 package com.tribuo.backend.jpa;
-// Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1
+// Generated Oct 28, 2017 12:35:33 PM by Hibernate Tools 4.3.1
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -8,6 +8,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
@@ -28,85 +30,47 @@ public class Categorias implements java.io.Serializable {
 
     private Integer idCategoria;
     private String nombreCategoria;
-    private Set<Subcategorias> subcategoriases;
+    private Set<Subcategorias> subcategoriases = new HashSet<Subcategorias>(0);
 
-    /**
-     *
-     */
     public Categorias() {
-        this.subcategoriases = new HashSet<>(0);
     }
 
-    /**
-     *
-     * @param nombreCategoria
-     */
     public Categorias(String nombreCategoria) {
-        this.subcategoriases = new HashSet<>(0);
         this.nombreCategoria = nombreCategoria;
     }
 
-    /**
-     *
-     * @param nombreCategoria
-     * @param subcategoriases
-     */
     public Categorias(String nombreCategoria, Set<Subcategorias> subcategoriases) {
-        this.subcategoriases = new HashSet<>(0);
         this.nombreCategoria = nombreCategoria;
         this.subcategoriases = subcategoriases;
     }
 
-    /**
-     *
-     * @return
-     */
     @Id
     @GeneratedValue(strategy = IDENTITY)
+
     @Column(name = "id_categoria", unique = true, nullable = false)
     public Integer getIdCategoria() {
         return this.idCategoria;
     }
 
-    /**
-     *
-     * @param idCategoria
-     */
     public void setIdCategoria(Integer idCategoria) {
         this.idCategoria = idCategoria;
     }
 
-    /**
-     *
-     * @return
-     */
     @Column(name = "nombre_categoria", unique = true, nullable = false, length = 30)
     public String getNombreCategoria() {
         return this.nombreCategoria;
     }
 
-    /**
-     *
-     * @param nombreCategoria
-     */
     public void setNombreCategoria(String nombreCategoria) {
         this.nombreCategoria = nombreCategoria;
     }
 
-    /**
-     *
-     * @return
-     */
-    @JsonIgnore
+    @JsonIgnore    
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "categorias")
     public Set<Subcategorias> getSubcategoriases() {
         return this.subcategoriases;
     }
 
-    /**
-     *
-     * @param subcategoriases
-     */
     public void setSubcategoriases(Set<Subcategorias> subcategoriases) {
         this.subcategoriases = subcategoriases;
     }

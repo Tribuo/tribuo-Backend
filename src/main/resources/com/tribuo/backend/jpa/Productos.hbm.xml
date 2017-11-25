@@ -1,58 +1,59 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 28, 2017 12:35:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="tribuo" name="com.tribuo.backend.jpa.Productos" optimistic-lock="version" table="productos">
-    <id name="idProducto" type="java.lang.Integer">
-      <column name="id_producto"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="com.tribuo.backend.jpa.Marcas" fetch="select" name="marcas">
-      <column name="marca" not-null="true"/>
-    </many-to-one>
-    <many-to-one class="com.tribuo.backend.jpa.Presentaciones" fetch="select" name="presentaciones">
-      <column name="tipo_presentacion" not-null="true"/>
-    </many-to-one>
-    <property name="nombreProducto" type="string">
-      <column length="20" name="nombre_producto" not-null="true"/>
-    </property>
-    <property name="precioSugerido" type="java.lang.Integer">
-      <column name="precio_sugerido"/>
-    </property>
-    <property name="codigoBarras" type="string">
-      <column length="20" name="codigo_barras" unique="true"/>
-    </property>
-    <property name="descripcion" type="string">
-      <column length="200" name="descripcion"/>
-    </property>
-    <property name="tipo" type="string">
-      <column length="30" name="tipo" not-null="true"/>
-    </property>
-    <set fetch="select" inverse="true" lazy="true" name="ventases" table="ventas">
-      <key>
-        <column name="producto" not-null="true"/>
-      </key>
-      <one-to-many class="com.tribuo.backend.jpa.Ventas"/>
-    </set>
-    <set fetch="select" inverse="false" lazy="true" name="especificos" table="productos_especifico">
-      <key>
-        <column name="producto" not-null="true"/>
-      </key>
-      <many-to-many entity-name="com.tribuo.backend.jpa.Especificos">
-        <column name="especificos" not-null="true"/>
-      </many-to-many>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="comprases" table="compras">
-      <key>
-        <column name="producto" not-null="true"/>
-      </key>
-      <one-to-many class="com.tribuo.backend.jpa.Compras"/>
-    </set>
-    <set fetch="select" inverse="true" lazy="true" name="productosTiendases" table="productos_tiendas">
-      <key>
-        <column name="producto" not-null="true"/>
-      </key>
-      <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas"/>
-    </set>
-  </class>
+    <class name="com.tribuo.backend.jpa.Productos" table="productos" catalog="tribuo" optimistic-lock="version">
+        <id name="idProducto" type="java.lang.Integer">
+            <column name="id_producto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="marcas" class="com.tribuo.backend.jpa.Marcas" fetch="select">
+            <column name="marca" not-null="true" />
+        </many-to-one>
+        <many-to-one name="presentaciones" class="com.tribuo.backend.jpa.Presentaciones" fetch="select">
+            <column name="tipo_presentacion" not-null="true" />
+        </many-to-one>
+        <property name="nombreProducto" type="string">
+            <column name="nombre_producto" length="20" not-null="true" />
+        </property>
+        <property name="precioSugerido" type="java.lang.Integer">
+            <column name="precio_sugerido" />
+        </property>
+        <property name="codigoBarras" type="string">
+            <column name="codigo_barras" length="20" unique="true" />
+        </property>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="200" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="30" not-null="true" />
+        </property>
+        <set name="ventases" table="ventas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="producto" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.Ventas" />
+        </set>
+        <set name="especificoses" table="productos_especifico" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="producto" not-null="true" />
+            </key>
+            <many-to-many entity-name="com.tribuo.backend.jpa.Especificos">
+                <column name="especificos" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="comprases" table="compras" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="producto" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.Compras" />
+        </set>
+        <set name="productosTiendases" table="productos_tiendas" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="producto" not-null="true" />
+            </key>
+            <one-to-many class="com.tribuo.backend.jpa.ProductosTiendas" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -19,6 +19,8 @@ import com.tribuo.backend.jpa.User;
 import com.tribuo.backend.repositories.RoleRepository;
 import com.tribuo.backend.repositories.UserRepository;
 import com.tribuo.backend.services.UserService;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 /**
  *
@@ -33,8 +35,11 @@ public class UsuarioServiceImpl implements UserService {
     @Autowired
     RoleRepository roleRepo;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    @Bean
+    @Override
+    public PasswordEncoder getPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     /**
      *
@@ -66,7 +71,7 @@ public class UsuarioServiceImpl implements UserService {
 
     /**
      * @param email
-     * @return 
+     * @return
      * @Override public boolean existeCorreo(String usuario) { return
      * usuRepo.existeCorreo(usuario) != 0; }*
      */
@@ -81,10 +86,21 @@ public class UsuarioServiceImpl implements UserService {
      */
     @Override
     public void saveUser(User user) {
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         user.setActive(1);
         Role userRole = roleRepo.findByRole("ADMIN");
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         usuRepo.save(user);
+    }
+
+    @Override
+    public void save(User user) {
+        user.setPassword(getPasswordEncoder().encode(user.getPassword()));
+        usuRepo.save(user);
+    }
+
+    @Override
+    public boolean userExistByEmail(String email) {
+        User u = usuRepo.findByEmail(email);
+        return null != u;
     }
 }

@@ -8,12 +8,11 @@ package com.tribuo.backend.repositories;
 import com.tribuo.backend.jpa.User;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-/**
- * import org.springframework.data.jpa.repository.Query; import
- * org.springframework.data.repository.query.Param;*
- */
+
 /**
  *
  * @author Camilo Aguado
@@ -24,10 +23,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     /**
      * @param email
      * @return 
-     * @Query(value = "SELECT COUNT(email) FROM user WHERE email =
-     * :correo",nativeQuery = true) Integer existeCorreo(@Param("correo")String
-     * usuario);
-     *
      */
-    User findByEmail(String email);
+    @Query(value = "SELECT * FROM user WHERE email = :email", nativeQuery = true)
+    User findByEmail(@Param("email")String email);
+    
 }

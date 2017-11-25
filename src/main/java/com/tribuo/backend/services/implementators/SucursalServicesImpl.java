@@ -5,10 +5,15 @@
  */
 package com.tribuo.backend.services.implementators;
 
-import com.tribuo.backend.jpa.Sucursales;
+import com.tribuo.backend.jpa.*;
 import com.tribuo.backend.repositories.SucursalesRepository;
+import com.tribuo.backend.repositories.TiendasRepository;
+import com.tribuo.backend.repositories.UserRepository;
 import com.tribuo.backend.services.SucursalServices;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +26,12 @@ public class SucursalServicesImpl implements SucursalServices {
 
     @Autowired
     SucursalesRepository sucuRepo;
+    
+    @Autowired
+    TiendasRepository tiendasRepo;
+    
+    @Autowired
+    UserRepository usuRepo;
 
     /**
      *
@@ -57,6 +68,18 @@ public class SucursalServicesImpl implements SucursalServices {
      */
     @Override
     public void createSucursal(Sucursales s) {
+        if(s.getTiendas()!= null){
+            Tiendas t = s.getTiendas();
+            if(t.getUser()!= null){
+                User u = t.getUser();
+                usuRepo.save(u);
+                
+            }
+            Set<Sucursales> set = new HashSet<>();
+            t.setSucursaleses(set);
+            tiendasRepo.save(t);
+            
+        }
         sucuRepo.save(s);
     }
 

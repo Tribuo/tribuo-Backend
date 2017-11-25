@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated Jun 2, 2017 9:58:33 PM by Hibernate Tools 4.3.1 -->
+<!-- Generated Oct 28, 2017 12:35:33 PM by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="com.tribuo.backend.jpa.User" table="user" catalog="tribuo" optimistic-lock="version">
         <id name="userId" type="java.lang.Integer">
@@ -23,7 +23,7 @@
         <property name="password" type="string">
             <column name="password" not-null="true" />
         </property>
-        <property name="contactNumber" type="int">
+        <property name="contactNumber" type="java.lang.Long">
             <column name="contact_number" not-null="true" unique="true" />
         </property>
         <set name="tiendases" table="tiendas" inverse="true" lazy="true" fetch="select">

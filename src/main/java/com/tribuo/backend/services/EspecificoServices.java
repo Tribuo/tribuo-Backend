@@ -13,20 +13,20 @@ import java.util.List;
  * @author Camilo Aguado
  */
 public interface EspecificoServices {
-    
+
     /**
      *
-     * @return 
+     * @return
      */
     public List<Especificos> getEspecificos();
-    
+
     /**
      *
      * @param id
      * @return
      */
     public Especificos getEspecificosById(int id);
-    
+
     /**
      *
      * @param especifico
@@ -34,6 +34,5 @@ public interface EspecificoServices {
     public void insertEspecifico(Especificos especifico);
 
     public List<Especificos> getEspecByCategoria(Integer id);
-    
-    
+
 }

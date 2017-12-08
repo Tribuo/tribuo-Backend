@@ -62,4 +62,11 @@ public class SucursalesController {
         se.createSucursal(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @RequestMapping(value = "/tienda/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Sucursales>> getSucursalesByTienda(@PathVariable("id") Integer id) {
+        List<Sucursales> u = se.getSucursalesByTienda(id);
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
 }

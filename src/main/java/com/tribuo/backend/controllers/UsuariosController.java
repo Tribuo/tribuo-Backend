@@ -69,12 +69,19 @@ public class UsuariosController {
     @RequestMapping(value = "/existe/{correo:.+}", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Boolean> existeUsuario(@PathVariable("correo") String usuario) {
-        
+
         return new ResponseEntity<>(se.userExistByEmail(usuario), HttpStatus.OK);
     }
-    
-    	@RequestMapping("/user")
-	public Principal sayHello(Principal principal) {
-		return principal;
-	}
+
+    @RequestMapping("/user")
+    public Principal sayHello(Principal principal) {
+        return principal;
+    }
+
+    @RequestMapping(value = "/email/{correo:.+}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<User> getUsuarioByEmail(@PathVariable("correo") String usuario) {
+
+        return new ResponseEntity<>(se.findUserByEmail(usuario), HttpStatus.OK);
+    }
 }

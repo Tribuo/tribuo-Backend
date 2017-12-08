@@ -59,4 +59,9 @@ public class TiendaServicesImpl implements TiendaServices {
         tienRepo.delete(t);
     }
 
+    @Override
+    public List<Tiendas> getTiendasByUser(Integer id) {
+        return tienRepo.getTiendasByUser(id);
+    }
+
 }

@@ -61,7 +61,7 @@ public class CompraServicesImpl implements CompraServices {
             pt = prodTienRepo.getProductoTiendaById(s.getIdSucursal(), p.getIdProducto());
             pt.setCantidad(pt.getCantidad() + compra.getCantidad());
         } catch (Exception e) {
-          pt = new ProductosTiendas(p, s, compra.getCantidad(), 0);
+            pt = new ProductosTiendas(p, s, compra.getCantidad(), 0);
         }
         prodTienRepo.save(pt);
     }

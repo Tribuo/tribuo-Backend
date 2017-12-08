@@ -51,5 +51,19 @@ public class ProductosTiendasController {
         ProductosTiendas u = se.getProductoTiendaById(idTienda, idProducto);
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
-    
+
+    @RequestMapping(value = "/{idTienda}-{idProducto}/precio", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<Integer> getProductoPrecioByTienda(@PathVariable("idTienda") Integer idTienda, @PathVariable("idProducto") Integer idProducto) {
+        Integer u = se.getProductoPrecioByTienda(idTienda, idProducto);
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+
+    @RequestMapping(value = "/sucursal/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<ProductosTiendas>> getAllProductosByTienda(@PathVariable("id") Integer idTienda) {
+        List<ProductosTiendas> u = se.getAllProductosByTienda(idTienda);
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
+
 }

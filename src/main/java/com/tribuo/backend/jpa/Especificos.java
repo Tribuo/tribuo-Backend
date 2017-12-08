@@ -22,7 +22,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "especificos",
-         catalog = "tribuo"
+        catalog = "tribuo"
 )
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Especificos implements java.io.Serializable {
@@ -76,7 +76,7 @@ public class Especificos implements java.io.Serializable {
     public void setNombreEspecifico(String nombreEspecifico) {
         this.nombreEspecifico = nombreEspecifico;
     }
-    
+
     @JsonIgnore
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "productos_especifico", catalog = "tribuo", joinColumns = {

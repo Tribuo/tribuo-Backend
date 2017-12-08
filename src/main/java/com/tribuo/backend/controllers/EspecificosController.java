@@ -26,9 +26,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/especificos")
 public class EspecificosController {
+
     @Autowired
     EspecificoServices se;
-    
+
     /**
      *
      * @param id
@@ -62,7 +63,7 @@ public class EspecificosController {
         se.insertEspecifico(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    
+
     /**
      *
      * @param id

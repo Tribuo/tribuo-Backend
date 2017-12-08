@@ -5,7 +5,6 @@
  */
 package com.tribuo.backend.configuration;
 
-
 import org.apache.commons.lang3.StringUtils;
 import org.pac4j.core.authorization.authorizer.ProfileAuthorizer;
 import org.pac4j.core.context.WebContext;

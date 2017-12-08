@@ -28,6 +28,8 @@ public interface ProductoTiendaServices {
      */
     public ProductosTiendas getProductoTiendaById(int tiendaId, int productoId);
 
+    public Integer getProductoPrecioByTienda(int tiendaId, int productoId);
+
     /**
      *
      * @param pt
@@ -49,4 +51,6 @@ public interface ProductoTiendaServices {
      * @param cantidad
      */
     public void updateProdTiendaCantidad(int sucurusal, int produto, int cantidad);
+
+    public List<ProductosTiendas> getAllProductosByTienda(Integer sucursal);
 }

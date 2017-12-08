@@ -38,4 +38,6 @@ public interface TiendaServices {
      * @param t
      */
     public void deleteTienda(Tiendas t);
+
+    public List<Tiendas> getTiendasByUser(Integer id);
 }

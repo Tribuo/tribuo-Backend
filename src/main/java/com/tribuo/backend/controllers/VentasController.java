@@ -51,7 +51,7 @@ public class VentasController {
         List<Ventas> u = se.getVentas();
         return new ResponseEntity<>(u, HttpStatus.OK);
     }
-    
+
     /**
      *
      * @param p

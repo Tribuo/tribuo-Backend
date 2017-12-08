@@ -82,4 +82,14 @@ public class ProductoTiendaServicesImpl implements ProductoTiendaServices {
         prodTienRepo.save(pt);
     }
 
+    @Override
+    public Integer getProductoPrecioByTienda(int tiendaId, int productoId) {
+        return prodTienRepo.getProductoPrecioById(tiendaId, productoId);
+    }
+
+    @Override
+    public List<ProductosTiendas> getAllProductosByTienda(Integer sucursal) {
+        return prodTienRepo.getAllProductsByTienda(sucursal);
+    }
+
 }

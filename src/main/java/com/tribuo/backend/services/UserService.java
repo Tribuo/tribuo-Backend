@@ -51,6 +51,6 @@ public interface UserService {
     public PasswordEncoder getPasswordEncoder();
 
     public void save(User user);
-    
+
     public boolean userExistByEmail(String email);
 }

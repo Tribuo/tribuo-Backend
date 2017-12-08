@@ -51,7 +51,7 @@ public class MarcasController {
         List<Marcas> m = se.getMarcas();
         return new ResponseEntity<>(m, HttpStatus.OK);
     }
-    
+
     /**
      *
      * @param marca
@@ -62,7 +62,7 @@ public class MarcasController {
         se.createMarca(marca);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    
+
     /**
      *
      * @param id

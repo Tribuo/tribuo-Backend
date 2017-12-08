@@ -65,7 +65,7 @@ public class Categorias implements java.io.Serializable {
         this.nombreCategoria = nombreCategoria;
     }
 
-    @JsonIgnore    
+    @JsonIgnore
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "categorias")
     public Set<Subcategorias> getSubcategoriases() {
         return this.subcategoriases;

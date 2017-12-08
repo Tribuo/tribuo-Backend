@@ -12,7 +12,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-
 /**
  *
  * @author Camilo Aguado
@@ -22,9 +21,9 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     /**
      * @param email
-     * @return 
+     * @return
      */
     @Query(value = "SELECT * FROM user WHERE email = :email", nativeQuery = true)
-    User findByEmail(@Param("email")String email);
-    
+    User findByEmail(@Param("email") String email);
+
 }

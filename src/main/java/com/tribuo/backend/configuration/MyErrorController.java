@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 /**
  *
  * @author Camilo
@@ -37,13 +38,15 @@ public class MyErrorController extends BasicErrorController {
         final HttpStatus status = getStatus(request);
         if (null == status) {
             return new ModelAndView("error500");
-        } else switch (status) {
-            case UNAUTHORIZED:
-                return new ModelAndView("error401");
-            case FORBIDDEN:
-                return new ModelAndView("error403");
-            default:
-                return new ModelAndView("error500");
+        } else {
+            switch (status) {
+                case UNAUTHORIZED:
+                    return new ModelAndView("error401");
+                case FORBIDDEN:
+                    return new ModelAndView("error403");
+                default:
+                    return new ModelAndView("error500");
+            }
         }
     }
 }

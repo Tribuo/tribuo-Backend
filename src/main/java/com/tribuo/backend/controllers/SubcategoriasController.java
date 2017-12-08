@@ -62,7 +62,7 @@ public class SubcategoriasController {
         se.createSubcategoria(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
-    
+
     /**
      *
      * @param id

@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @author Camilo Aguado
  */
 public interface FabricantesRepository extends JpaRepository<Fabricantes, Integer> {
-        
+
 }

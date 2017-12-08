@@ -62,4 +62,11 @@ public class TiendasController {
         se.createTienda(p);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+    @RequestMapping(value = "/user/{id}", method = RequestMethod.GET)
+    @ResponseBody
+    public ResponseEntity<List<Tiendas>> getTiendasByUser(@PathVariable("id") Integer id) {
+        List<Tiendas> u = se.getTiendasByUser(id);
+        return new ResponseEntity<>(u, HttpStatus.OK);
+    }
 }

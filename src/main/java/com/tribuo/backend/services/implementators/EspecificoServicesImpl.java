@@ -21,8 +21,6 @@ public class EspecificoServicesImpl implements EspecificoServices {
 
     @Autowired
     EspecificosRepository especRepo;
-    
-    
 
     @Override
     public List<Especificos> getEspecificos() {
@@ -41,6 +39,7 @@ public class EspecificoServicesImpl implements EspecificoServices {
 
     @Override
     public List<Especificos> getEspecByCategoria(Integer id) {
-return especRepo.getEspecBySubcat(id);    }
+        return especRepo.getEspecBySubcat(id);
+    }
 
 }

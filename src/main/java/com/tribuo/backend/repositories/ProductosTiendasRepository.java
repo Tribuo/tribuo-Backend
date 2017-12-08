@@ -7,6 +7,7 @@ package com.tribuo.backend.repositories;
 
 import com.tribuo.backend.jpa.ProductosTiendas;
 import com.tribuo.backend.jpa.ProductosTiendasId;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -25,6 +26,9 @@ public interface ProductosTiendasRepository extends JpaRepository<ProductosTiend
      */
     @Query(value = "SELECT * FROM productos_tiendas WHERE sucursal = :idTienda AND producto = :idProducto", nativeQuery = true)
     public ProductosTiendas getProductoTiendaById(@Param("idTienda") int idTienda, @Param("idProducto") int idProducto);
+
+    @Query(value = "SELECT precio FROM productos_tiendas WHERE sucursal = :idTienda AND producto = :idProducto", nativeQuery = true)
+    public Integer getProductoPrecioById(@Param("idTienda") int idTienda, @Param("idProducto") int idProducto);
 
     /**
      *
@@ -47,4 +51,7 @@ public interface ProductosTiendasRepository extends JpaRepository<ProductosTiend
             + "SET precio = :precio"
             + "WHERE sucursal = :sucursal AND producto = :producto", nativeQuery = true)
     public void updateProductoTiendaPrecio(@Param("sucursal") int nitSucursal, @Param("producto") int ipProducto, @Param("precio") int precio);
+
+    @Query(value = "SELECT * FROM productos_tiendas WHERE sucursal = :sucursal", nativeQuery = true)
+    public List<ProductosTiendas> getAllProductsByTienda(@Param("sucursal") Integer id);
 }
